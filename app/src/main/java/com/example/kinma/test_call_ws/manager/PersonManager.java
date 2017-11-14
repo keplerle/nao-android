@@ -22,9 +22,10 @@ public class PersonManager {
     }
 
     public void getPerson(){
-        personService.getPerson().enqueue(new Callback<Person>){
+        personService.getPerson().enqueue(new Callback<Person>(){
             @Override
-            public void (Call<Person> call, Response<Person> response){
+            public void onResponse(Call<Person> call, Response<Person> response){
+                //poste un evenement avec EventBus. L'evenement contient Person
                 Person person=response.body();
                 LOGGER.info(person.getName());
                 LOGGER.info(Integer.toString(person.getId()));

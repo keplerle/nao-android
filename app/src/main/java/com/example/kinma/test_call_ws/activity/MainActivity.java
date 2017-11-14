@@ -14,20 +14,23 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-@BindView(R.id.main_content) TextView textView;
+    @BindView(R.id.main_content)
+    TextView textView;
 //@BindView(R.id.button_load)  Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
         textView.setText("Toto");
     }
-       @OnClick(R.id.button_load)
-        public void onClickEvent(){
-            textView.setText("Titi");
+//Catcher l'event, recuperer l'objet, utiliser l'objet pour initialiser le front
+    @OnClick(R.id.button_load)
+    public void onClickEvent() {
+        textView.setText("Titi");
 
     }
 }
