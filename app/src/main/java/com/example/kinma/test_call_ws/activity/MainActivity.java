@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Catcher l'event, recuperer l'objet, utiliser l'objet pour initialiser le front
-    @OnClick(R.id.button_load)
+    @OnClick(R.id.button)
     public void onClickEvent() {
         EventBus.getDefault().post(new PleaseRefreshEvent("toto"));
 
