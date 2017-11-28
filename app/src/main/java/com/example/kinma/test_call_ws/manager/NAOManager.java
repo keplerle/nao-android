@@ -1,7 +1,7 @@
 package com.example.kinma.test_call_ws.manager;
 
-import com.example.kinma.test_call_ws.model.Person;
-import com.example.kinma.test_call_ws.service.PersonService;
+import com.example.kinma.test_call_ws.model.NAO;
+import com.example.kinma.test_call_ws.service.NAOService;
 
 import java.util.logging.Logger;
 
@@ -12,8 +12,8 @@ import retrofit2.Retrofit;
 
 public class NAOManager {
 
-    PersonService personService;
-    private static final Logger LOGGER=Logger.getLogger("PersonManager");
+    NAOService naoService;
+    private static final Logger LOGGER=Logger.getLogger("NAOManager");
 
     public NAOManager(){
         Retrofit retrofit=new Retrofit.Builder()
@@ -21,22 +21,20 @@ public class NAOManager {
                // .baseUrl("http://localhost:8080")
                 .baseUrl("http://192.168.2.1:8080")
                 .build();
-        this.personService=retrofit.create(PersonService.class);
+        this.naoService=retrofit.create(NAOService.class);
     }
 
-    public void getPerson(){
-        personService.getPerson().enqueue(new Callback<Person>(){
+    public void getNAO(){
+        naoService.getNAO().enqueue(new Callback<NAO>(){
             @Override
-            public void onResponse(Call<Person> call, Response<Person> response){
-                //poste un evenement avec EventBus. L'evenement contient Person
-                Person person=response.body();
-                LOGGER.info(person.getName());
-                LOGGER.info(Integer.toString(person.getId()));
-                LOGGER.info(Integer.toString(person.getAge()));
+            public void onResponse(Call<NAO> call, Response<NAO> response){
+                //poste un evenement avec EventBus. L'evenement contient NAO
+                NAO nao=response.body();
+
             }
 
             @Override
-            public void onFailure(Call<Person> call, Throwable t){
+            public void onFailure(Call<NAO> call, Throwable t){
                 t.printStackTrace();
             }
         });
