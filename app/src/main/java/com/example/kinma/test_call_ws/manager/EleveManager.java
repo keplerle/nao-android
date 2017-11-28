@@ -1,7 +1,7 @@
 package com.example.kinma.test_call_ws.manager;
 
-import com.example.kinma.test_call_ws.model.Person;
-import com.example.kinma.test_call_ws.service.PersonService;
+import com.example.kinma.test_call_ws.model.Eleve;
+import com.example.kinma.test_call_ws.service.EleveService;
 
 import java.util.logging.Logger;
 
@@ -12,8 +12,8 @@ import retrofit2.Retrofit;
 
 public class EleveManager {
 
-    PersonService personService;
-    private static final Logger LOGGER=Logger.getLogger("PersonManager");
+   EleveService eleveService;
+    private static final Logger LOGGER=Logger.getLogger("EleveManager");
 
     public EleveManager(){
         Retrofit retrofit=new Retrofit.Builder()
@@ -21,22 +21,20 @@ public class EleveManager {
                // .baseUrl("http://localhost:8080")
                 .baseUrl("http://192.168.2.1:8080")
                 .build();
-        this.personService=retrofit.create(PersonService.class);
+        this.eleveService=retrofit.create(EleveService.class);
     }
 
-    public void getPerson(){
-        personService.getPerson().enqueue(new Callback<Person>(){
+    public void getEleve(){
+        eleveService.getEleve().enqueue(new Callback<Eleve>(){
             @Override
-            public void onResponse(Call<Person> call, Response<Person> response){
-                //poste un evenement avec EventBus. L'evenement contient Person
-                Person person=response.body();
-                LOGGER.info(person.getName());
-                LOGGER.info(Integer.toString(person.getId()));
-                LOGGER.info(Integer.toString(person.getAge()));
+            public void onResponse(Call<Eleve> call, Response<Eleve> response){
+                //poste un evenement avec EventBus. L'evenement contient Eleve
+                Eleve eleve=response.body();
+
             }
 
             @Override
-            public void onFailure(Call<Person> call, Throwable t){
+            public void onFailure(Call<Eleve> call, Throwable t){
                 t.printStackTrace();
             }
         });
