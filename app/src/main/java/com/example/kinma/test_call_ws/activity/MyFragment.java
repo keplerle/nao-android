@@ -11,7 +11,9 @@ import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.event.PleaseRefreshEvent;
 
 import android.os.Bundle;
-import de.greenrobot.event.EventBus;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class MyFragment extends Fragment {
 
@@ -43,6 +45,7 @@ public class MyFragment extends Fragment {
     }
 
     //This object can receive a PleaseRefreshEvent
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(PleaseRefreshEvent event){
         textView.setText(event.getMyString());
     }

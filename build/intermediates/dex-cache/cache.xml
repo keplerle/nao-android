@@ -3,21 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\kinma\.android\build-cache\dd73e56fdf95c3699658edb47c9c9dac427798b6\output\jars\classes.jar"
+        jar="C:\Users\kinma\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.4.0\ddd166d01b3158d1c00576d29f7ed15c030df719\eventbus-2.4.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="6a2bcb61342d09fe9acf55c9daf63961c8866cc0">
-        <dex dex="C:\Users\kinma\Desktop\Dossier de test Android\Test_call_ws\app\build\intermediates\pre-dexed\debug\classes_7d9af593933709f64024431364bf88713707fa72.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\kinma\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.8.1\bc373fb6bc7bca3035041b924f158fd2b946ee8d\butterknife-annotations-8.8.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bc373fb6bc7bca3035041b924f158fd2b946ee8d">
-        <dex dex="C:\Users\kinma\Desktop\Dossier de test Android\Test_call_ws\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.8.1_8698148fdc2cbf9ddc6e245812acda2a78f56662.jar" />
+        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
+        <dex dex="C:\Users\kinma\Documents\GitHub\nao-android\app\build\intermediates\pre-dexed\debug\eventbus-2.4.0_65a794bfebc05ce655078a0aa619c3cb196fe667.jar" />
     </item>
 
 </items>
