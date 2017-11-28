@@ -15,7 +15,7 @@ import de.greenrobot.event.EventBus;
 
 public class MyFragment extends Fragment {
 
-    @BindView(R.id.main_content)
+    @BindView(R.id.text)
     TextView textView;
 
     @Nullable

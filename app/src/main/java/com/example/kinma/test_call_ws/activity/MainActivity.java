@@ -16,8 +16,7 @@ import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*@BindView(R.id.main_content)
-    TextView textView;*/
+    
     @BindView(R.id.button)
     Button button;
 
