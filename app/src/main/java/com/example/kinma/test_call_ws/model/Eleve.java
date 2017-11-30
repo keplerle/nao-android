@@ -8,7 +8,7 @@ public class Eleve {
     private Long id;
     private String nom;
     private String prenom;
-
+    private String classe;
     private int bonne_reponse;
     private int fausse_reponse;
 
@@ -54,5 +54,13 @@ public class Eleve {
 
     public void setFausse_reponse(int fausse_reponse) {
         this.fausse_reponse = fausse_reponse;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
     }
 }

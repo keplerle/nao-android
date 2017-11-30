@@ -19,8 +19,8 @@ public interface NAOService {
     @FormUrlEncoded
     Call<NAO> saveNAO(@Body NAO nao);
 
-    @DELETE("/nao/{id}")
-    Call<Boolean> deleteNAO(@Path("id") long id);
+    @DELETE("/nao/{ip}")
+    Call<Boolean> deleteNAO(@Path("ip") String ip);
 
     @PUT("/nao")
     Call<Boolean> updateNAO();

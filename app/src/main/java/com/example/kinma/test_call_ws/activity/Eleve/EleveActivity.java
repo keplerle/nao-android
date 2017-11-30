@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.kinma.test_call_ws.R;
-import com.example.kinma.test_call_ws.activity.Eleve.EleveActivity;
+
 
 public class EleveActivity extends AppCompatActivity {
 
