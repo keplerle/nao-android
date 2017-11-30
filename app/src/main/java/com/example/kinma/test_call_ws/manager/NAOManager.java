@@ -22,14 +22,14 @@ public class NAOManager {
         this.bus = bus;
 
     }
-    /*public NAOManager(){
+    public NAOManager(){
         Retrofit retrofit=new Retrofit.Builder()
                // .baseUrl("http://api.example.com")
                // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.2.1:8080")
+                .baseUrl("http://192.168.215.19:8080")
                 .build();
         this.naoService=retrofit.create(NAOService.class);
-    }*/
+    }
 
     public void getNAO(){
         naoService.getNAO().enqueue(new Callback<NAO>(){

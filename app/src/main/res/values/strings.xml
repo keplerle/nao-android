@@ -1,6 +1,20 @@
 <resources>
-    <string name="app_name">Test_call_ws</string>
-    <string name="button_load">Load</string>
-    <string name="please_refresh">Please Refresh</string>
-    <string name="question">What should I do ?</string>
+    <string name="app_name">NAOProfDeMath</string>
+    <string name="StartActivity_label">NAO Prof de Maths</string>
+    <string name="ConnexionActivity_label">Connexion Professeur</string>
+    <string name="RegisterProfActivity_label">Créer un Profil Professeur</string>
+    <string name="MenuActivity_label">Menu</string>
+
+
+    <string name="EleveActivity_label">Gestion des élèves</string>
+    <string name="RegisterEleveActivity_label">Créer un élève</string>
+
+    <string name="LancerExerciceActivity_label">Lancer un Exercice</string>
+    <string name="ExerciceActivity_label">Voir les Exercices en Cours</string>
+
+
+    <string name="SynchroniserRobotNAOActivity_label">Synchroniser un Robot NAO</string>
+    <string name="RobotNAOActivity_label">Robot NAO Synchronisé</string>
+
+
 </resources>

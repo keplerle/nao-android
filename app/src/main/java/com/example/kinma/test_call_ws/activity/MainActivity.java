@@ -1,13 +1,14 @@
 package com.example.kinma.test_call_ws.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 
 import com.example.kinma.test_call_ws.R;
-import com.example.kinma.test_call_ws.event.PleaseRefreshEvent;
 import com.example.kinma.test_call_ws.manager.EleveManager;
 import com.example.kinma.test_call_ws.model.Eleve;
 
@@ -22,10 +23,10 @@ import org.greenrobot.eventbus.ThreadMode;
 public class MainActivity extends AppCompatActivity {
 
 
-    @BindView(R.id.button)
+    /*@BindView(R.id.button)
     Button button;
     @BindView(R.id.textView)
-    TextView textView;
+    TextView textView;*/
     EleveManager eleveManager;
 
     @Override
@@ -33,20 +34,21 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.StartActivity_label);
         ButterKnife.bind(this);
         this.eleveManager = new EleveManager();
     }
 
     //Catcher l'event, recuperer l'objet, utiliser l'objet pour initialiser le front
-    @OnClick(R.id.button)
+    /*@OnClick(R.id.button)
     public void onClickEvent() {
         this.eleveManager.getEleve();
 
-    }
+    }*/
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Eleve eleve) {
-        textView.setText(eleve.getNom());
+       //textView.setText(eleve.getNom());
     }
 
 
@@ -60,5 +62,10 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+    public void DemarerApplication (View view){
+        Intent intent = new Intent(MainActivity.this, ConnexionActivity.class);
+        startActivity(intent);
     }
 }

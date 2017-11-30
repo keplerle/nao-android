@@ -5,7 +5,9 @@ package com.example.kinma.test_call_ws.model;
  */
 
 public class NAO {
-    private Long id;
+    private String ip;
+    private String nom;
+    private int etatRobot;
     private int temperature_moteur;
     private int temperature_hardware;
     private int batterie;
@@ -18,15 +20,13 @@ public class NAO {
         super();
     }
 
-    public Long getId() {
-        return id;
+    public NAO(int etatRobot,String nomRobot,String ipRobot) {
+        this.ip = ip;
+        this.nom = nom;
+        this.etatRobot = etatRobot;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getTemperature_moteur() {
+     public int getTemperature_moteur() {
         return temperature_moteur;
     }
 
@@ -80,5 +80,29 @@ public class NAO {
 
     public void setDivise(boolean divise) {
         this.divise = divise;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getEtatRobot() {
+        return etatRobot;
+    }
+
+    public void setEtatRobot(int etatRobot) {
+        this.etatRobot = etatRobot;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

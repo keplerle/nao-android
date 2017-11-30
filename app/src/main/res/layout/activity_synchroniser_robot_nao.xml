@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kinma.test_call_ws.activity.RobotNAO.SynchroniserRobotNAOActivity">
+
+    <TextView
+        android:id="@+id/TextViewIPRobot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Adresse IP du robot :"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextViewNomerRobot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="150dp"
+        android:text="Nomer le robot :"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/TextViewIPRobot"
+        app:layout_constraintStart_toStartOf="@+id/TextViewIPRobot"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewIPRobot" />
+
+    <EditText
+        android:id="@+id/EditTextIPRobot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/TextViewIPRobot"
+        app:layout_constraintStart_toEndOf="@+id/TextViewIPRobot"
+        app:layout_constraintTop_toTopOf="@+id/TextViewIPRobot" />
+
+    <EditText
+        android:id="@+id/EditTextNomRobot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/TextViewNomerRobot"
+        app:layout_constraintStart_toStartOf="@+id/EditTextIPRobot"
+        app:layout_constraintTop_toTopOf="@+id/TextViewNomerRobot" />
+
+    <Button
+        android:id="@+id/ButtonTesterRobot"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_button"
+        android:onClick="TesterRobotNAO"
+        android:text="Tester la connexion"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/textColor"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/TextViewIPRobot"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewIPRobot" />
+
+    <Button
+        android:id="@+id/ButtonSynchroniserRobot"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_button"
+        android:onClick="SynchroniserRobotNAO"
+        android:text="Synchroniser le robot"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/textColor"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EditTextNomRobot" />
+
+    <ImageView
+        android:id="@+id/EtatConnexionRobotNAO"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ButtonTesterRobot"
+        app:layout_constraintStart_toEndOf="@+id/ButtonTesterRobot"
+        app:layout_constraintTop_toTopOf="@+id/ButtonTesterRobot"
+        tools:background="#AAA" />
+</android.support.constraint.ConstraintLayout>

@@ -4,15 +4,14 @@ package com.example.kinma.test_call_ws.model;
  * Created by kinma on 28/11/2017.
  */
 
-public class Eleve {
+public class Prof {
     private Long id;
     private String nom;
     private String prenom;
+    private String mail;
 
-    private int bonne_reponse;
-    private int fausse_reponse;
 
-    public Eleve() {
+    public Prof() {
         super();
     }
 
@@ -40,19 +39,5 @@ public class Eleve {
         this.prenom = prenom;
     }
 
-    public int getBonne_reponse() {
-        return bonne_reponse;
-    }
 
-    public void setBonne_reponse(int bonne_reponse) {
-        this.bonne_reponse = bonne_reponse;
-    }
-
-    public int getFausse_reponse() {
-        return fausse_reponse;
-    }
-
-    public void setFausse_reponse(int fausse_reponse) {
-        this.fausse_reponse = fausse_reponse;
-    }
 }

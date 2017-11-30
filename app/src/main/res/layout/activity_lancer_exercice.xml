@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kinma.test_call_ws.activity.Exercice.LancerExerciceActivity">
+
+    <Button
+        android:id="@+id/ButtonLancerExercice"
+        android:layout_width="197dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_button"
+        android:onClick="LancerExercice"
+        android:text="Lancer l'exercice"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/textColor"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SwitchNiveau" />
+
+    <RadioButton
+        android:id="@+id/RadioButtonMultiplication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="x (Multiplication)"
+        app:layout_constraintStart_toStartOf="@+id/RadioButtonDivision"
+        app:layout_constraintTop_toBottomOf="@+id/RadioButtonDivision" />
+
+    <RadioButton
+        android:id="@+id/RadioButtonDivision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:text="÷ (Division)"
+        app:layout_constraintBottom_toBottomOf="@+id/RadioButtonAddition"
+        app:layout_constraintStart_toEndOf="@+id/RadioButtonAddition" />
+
+    <RadioButton
+        android:id="@+id/RadioButtonAddition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="+ (Addition)"
+        app:layout_constraintStart_toStartOf="@+id/TextViewOperateur"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewOperateur" />
+
+    <RadioButton
+        android:id="@+id/RadioButtonSoustraction"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:text="- (Soustraction)"
+        app:layout_constraintBottom_toBottomOf="@+id/RadioButtonMultiplication"
+        app:layout_constraintStart_toStartOf="@+id/RadioButtonAddition" />
+
+    <TextView
+        android:id="@+id/TextViewIntro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Création d'un exercice"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextViewOperateur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Opérateur autorisés :"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewIntro" />
+
+    <Switch
+        android:id="@+id/SwitchOperande"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewOperande" />
+
+    <TextView
+        android:id="@+id/TextViewOperande"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Nombre d'opérande :"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/TextViewOperateur"
+        app:layout_constraintTop_toBottomOf="@+id/RadioButtonSoustraction" />
+
+    <TextView
+        android:id="@+id/TextViewNb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="1"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/SwitchOperande"
+        app:layout_constraintEnd_toStartOf="@+id/SwitchOperande"
+        app:layout_constraintTop_toTopOf="@+id/SwitchOperande" />
+
+    <TextView
+        android:id="@+id/TextViewNb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="2"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/SwitchOperande"
+        app:layout_constraintStart_toEndOf="@+id/SwitchOperande"
+        app:layout_constraintTop_toTopOf="@+id/SwitchOperande" />
+
+    <TextView
+        android:id="@+id/TextViewDifficulte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Niveau de difficulté"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/TextViewOperande"
+        app:layout_constraintTop_toBottomOf="@+id/SwitchOperande" />
+
+    <TextView
+        android:id="@+id/TextViewNiv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="0 à 10"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/SwitchNiveau"
+        app:layout_constraintEnd_toStartOf="@+id/SwitchNiveau"
+        app:layout_constraintTop_toTopOf="@+id/SwitchNiveau" />
+
+    <TextView
+        android:id="@+id/TextViewNiv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="0 à 100"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/SwitchNiveau"
+        app:layout_constraintStart_toEndOf="@+id/SwitchNiveau"
+        app:layout_constraintTop_toTopOf="@+id/SwitchNiveau" />
+
+    <Switch
+        android:id="@+id/SwitchNiveau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewDiffIntro" />
+
+    <TextView
+        android:id="@+id/TextViewDiffIntro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Nombre compris entre :"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/TextViewDifficulte"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewDifficulte" />
+
+</android.support.constraint.ConstraintLayout>
