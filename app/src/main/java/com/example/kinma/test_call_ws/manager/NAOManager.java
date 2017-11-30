@@ -5,7 +5,7 @@ import com.example.kinma.test_call_ws.service.NAOService;
 
 import java.util.logging.Logger;
 
-import de.greenrobot.event.EventBus;
+import org.greenrobot.eventbus.EventBus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
