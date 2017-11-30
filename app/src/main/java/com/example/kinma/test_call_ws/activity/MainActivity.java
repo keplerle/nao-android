@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     @BindView(R.id.textView)
     TextView textView;*/
-    EleveManager eleveManager;
+    //EleveManager eleveManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(R.string.StartActivity_label);
-        ButterKnife.bind(this);
-        this.eleveManager = new EleveManager();
+        //ButterKnife.bind(this);
+        //this.eleveManager = new EleveManager();
     }
 
     //Catcher l'event, recuperer l'objet, utiliser l'objet pour initialiser le front
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         this.eleveManager.getEleve();
 
     }*/
-
+/*
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Eleve eleve) {
        //textView.setText(eleve.getNom());
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
-    }
+    }*/
 
     public void DemarerApplication (View view){
         Intent intent = new Intent(MainActivity.this, ConnexionActivity.class);

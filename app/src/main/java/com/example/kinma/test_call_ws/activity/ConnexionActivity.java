@@ -8,72 +8,72 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.AlignmentSpan;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.manager.ProfManager;
+import com.example.kinma.test_call_ws.model.Prof;
 
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class ConnexionActivity extends AppCompatActivity  {
-    EditText EditTextUtilisateur,EditTextPassword;
-    Button ButtonConnexion,ButtonCreeProfil;
+import butterknife.BindView;
+
+public class ConnexionActivity extends AppCompatActivity {
+    @BindView(R.id.EditTextUtilisateur)
+    EditText EditTextUtilisateur;
+    @BindView(R.id.EditTextPasswordProf)
+    EditText EditTextPasswordProf;
+    ProfManager profManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
         setTitle(R.string.ConnexionActivity_label);
-
-        ButtonCreeProfil = (Button) findViewById(R.id.ButtonCreeProfil);
-        ButtonConnexion = (Button) findViewById(R.id.ButtonConnexion);
-        EditTextUtilisateur = (EditText)findViewById(R.id.EditTextUtilisateur);
-        EditTextPassword = (EditText)findViewById(R.id.EditTextPasswordProf);
+        this.profManager = new ProfManager();
     }
 
-    public void CreeProfil (View view){
+    public void CreeProfil(View view) {
         Intent intent = new Intent(ConnexionActivity.this, RegisterProfActivity.class);
         startActivity(intent);
     }
 
-    public void Connexion (View view){
+    public void Connexion(View view) {
         String MailUtilisateur = EditTextUtilisateur.getText().toString();
-        String PasswordUtilisateur = EditTextPassword.getText().toString();
-        if(MailUtilisateur.equals("")&&PasswordUtilisateur.equals("")){
+        String PasswordUtilisateur = EditTextPasswordProf.getText().toString();
+        if (MailUtilisateur.equals("") && PasswordUtilisateur.equals("")) {
             String text = "Veuillez rentrer un mail utilisateur et un password";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                     0, text.length() - 1,
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
-        }else if(MailUtilisateur.equals("")){
+        } else if (MailUtilisateur.equals("")) {
             String text = "Veuillez rentrer un mail utilisateur";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                     0, text.length() - 1,
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
-        }else if(PasswordUtilisateur.equals("")){
+        } else if (PasswordUtilisateur.equals("")) {
             String text = "Veuillez rentrer un password";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                     0, text.length() - 1,
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
-        }else{
+        } else {
             String type = "login";
-            //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            //backgroundWorker.execute(type, MailUtilisateur, PasswordUtilisateur);
             Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
             startActivity(intent);
         }
     }
-
-  /*  @Override
+/*
+    @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
@@ -86,11 +86,14 @@ public class ConnexionActivity extends AppCompatActivity  {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(LoginEvent event) {
-        if ("OK".equals(event.getMessage())){
+    public void onMessageEvent(Prof prof) {
+        if ("OK".equals()) {
             Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
             startActivity(intent);
         }
-    };*/
+    }
+
+    ;*/
+
 }
 

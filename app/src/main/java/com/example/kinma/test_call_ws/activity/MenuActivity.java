@@ -17,19 +17,19 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         setTitle(R.string.MenuActivity_label);
-
     }
 
-    public void RobotNAO (View view){
+    public void RobotNAO(View view) {
         Intent intent = new Intent(MenuActivity.this, RobotNAOActivity.class);
         startActivity(intent);
     }
-    public void Exercice (View view){
+
+    public void Exercice(View view) {
         Intent intent = new Intent(MenuActivity.this, ExerciceActivity.class);
         startActivity(intent);
     }
 
-    public void Eleve (View view){
+    public void Eleve(View view) {
         Intent intent = new Intent(MenuActivity.this, EleveActivity.class);
         startActivity(intent);
     }
