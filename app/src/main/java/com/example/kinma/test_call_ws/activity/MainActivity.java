@@ -12,22 +12,11 @@ import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.manager.EleveManager;
 import com.example.kinma.test_call_ws.model.Eleve;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    /*@BindView(R.id.button)
-    Button button;
-    @BindView(R.id.textView)
-    TextView textView;*/
-    //EleveManager eleveManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(R.string.StartActivity_label);
-        //ButterKnife.bind(this);
         //this.eleveManager = new EleveManager();
     }
 

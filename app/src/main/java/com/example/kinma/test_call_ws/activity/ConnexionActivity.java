@@ -21,6 +21,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ConnexionActivity extends AppCompatActivity {
     @BindView(R.id.EditTextUtilisateur)
@@ -34,6 +35,7 @@ public class ConnexionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
         setTitle(R.string.ConnexionActivity_label);
+        ButterKnife.bind(this);
         this.profManager = new ProfManager();
     }
 

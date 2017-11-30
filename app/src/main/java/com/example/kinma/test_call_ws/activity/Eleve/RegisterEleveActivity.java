@@ -13,8 +13,16 @@ import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RegisterEleveActivity extends AppCompatActivity {
-    EditText EditTextPrenomEleve,EditTextNomEleve,EditTextClasseEleve;
+    @BindView(R.id.EditTextPrenomEleve)
+    EditText EditTextPrenomEleve;
+    @BindView(R.id.EditTextNomEleve)
+    EditText EditTextNomEleve;
+    @BindView(R.id.EditTextClasseEleve)
+    EditText EditTextClasseEleve;
 
 
     @Override
@@ -22,10 +30,7 @@ public class RegisterEleveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_eleve);
         setTitle(R.string.RegisterEleveActivity_label);
-        EditTextNomEleve = (EditText)findViewById(R.id.EditTextNomEleve);
-        EditTextPrenomEleve = (EditText)findViewById(R.id.EditTextPrenomEleve);
-        EditTextClasseEleve = (EditText)findViewById(R.id.EditTextClasseEleve);
-
+        ButterKnife.bind(this);
     }
 
     public void CreerEleve(View view){

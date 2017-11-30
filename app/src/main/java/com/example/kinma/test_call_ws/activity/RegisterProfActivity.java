@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.kinma.test_call_ws.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class RegisterProfActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class RegisterProfActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_prof);
         setTitle(R.string.RegisterProfActivity_label);
+        ButterKnife.bind(this);
     }
 
     public void Cree(View view) {
