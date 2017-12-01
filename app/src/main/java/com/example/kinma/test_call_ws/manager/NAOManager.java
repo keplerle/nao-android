@@ -1,5 +1,7 @@
 package com.example.kinma.test_call_ws.manager;
 
+import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
+import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
 import com.example.kinma.test_call_ws.model.NAO;
 import com.example.kinma.test_call_ws.service.NAOService;
 
@@ -31,18 +33,68 @@ public class NAOManager {
         this.naoService=retrofit.create(NAOService.class);
     }
 
-    public void getNAO(){
-        naoService.getNAO().enqueue(new Callback<NAO>(){
+    public void getNAO() {
+        naoService.getNAO().enqueue(new Callback<NAO>() {
             @Override
-            public void onResponse(Call<NAO> call, Response<NAO> response){
+            public void onResponse(Call<NAO> call, Response<NAO> response) {
                 //poste un evenement avec EventBus. L'evenement contient NAO
-                NAO nao=response.body();
-
+                NAO nao = response.body();
+                EventBus.getDefault().post(nao);
             }
 
             @Override
-            public void onFailure(Call<NAO> call, Throwable t){
+            public void onFailure(Call<NAO> call, Throwable t) {
                 t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de récupérer le robot"));
+            }
+        });
+    }
+
+    public void saveNAO(NAO nao) {
+        naoService.saveNAO(nao).enqueue(new Callback<NAO>() {
+            @Override
+            public void onResponse(Call<NAO> call, Response<NAO> response) {
+                NAO nao = response.body();
+                EventBus.getDefault().post(new NAOSavedEvent(nao));
+            }
+
+            @Override
+            public void onFailure(Call<NAO> call, Throwable t) {
+                t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de synchroniser le robot"));
+            }
+        });
+    }
+
+    public void deleteNAO(String ip) {
+        naoService.deleteNAO(ip).enqueue(new Callback<Boolean>() {
+
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                EventBus.getDefault().post(new MessageEvent("Robot NAO supprimé"));
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t)  {
+                t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de supprimer le robot"));
+            }
+        });
+    }
+
+
+    public void updateNAO() {
+        naoService.updateNAO().enqueue(new Callback<Boolean>() {
+
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                EventBus.getDefault().post(new MessageEvent("Robot NAO modifié"));
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t)   {
+                t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de modifier le robot"));
             }
         });
     }

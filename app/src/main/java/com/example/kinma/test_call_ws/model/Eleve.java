@@ -9,6 +9,7 @@ public class Eleve {
     private String nom;
     private String prenom;
     private String classe;
+    private String prof;
     private int bonne_reponse;
     private int fausse_reponse;
 
@@ -62,5 +63,13 @@ public class Eleve {
 
     public void setClasse(String classe) {
         this.classe = classe;
+    }
+
+    public String getProf() {
+        return prof;
+    }
+
+    public void setProf(String prof) {
+        this.prof = prof;
     }
 }

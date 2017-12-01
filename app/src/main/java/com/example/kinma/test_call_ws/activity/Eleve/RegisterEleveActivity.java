@@ -12,6 +12,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.activity.MenuActivity;
+import com.example.kinma.test_call_ws.activity.Events.EleveSavedEvent;
+import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
+
+import com.example.kinma.test_call_ws.manager.EleveManager;
+import com.example.kinma.test_call_ws.model.Eleve;
+
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +34,7 @@ public class RegisterEleveActivity extends AppCompatActivity {
     EditText EditTextNomEleve;
     @BindView(R.id.EditTextClasseEleve)
     EditText EditTextClasseEleve;
-
+    EleveManager eleveManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +42,14 @@ public class RegisterEleveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_eleve);
         setTitle(R.string.RegisterEleveActivity_label);
         ButterKnife.bind(this);
+        this.eleveManager = new EleveManager();
     }
 
     public void CreerEleve(View view){
-        String NomEleve = EditTextNomEleve.getText().toString();
-        String PrenomEleve = EditTextPrenomEleve.getText().toString();
-        String ClasseEleve = EditTextClasseEleve.getText().toString();
-        if(NomEleve.equals("") || PrenomEleve.equals("") || ClasseEleve.equals("")){
+        String nomEleve = EditTextNomEleve.getText().toString();
+        String prenomEleve = EditTextPrenomEleve.getText().toString();
+        String classeEleve = EditTextClasseEleve.getText().toString();
+        if(nomEleve.equals("") || prenomEleve.equals("") || classeEleve.equals("")){
             String text = "Veuillez renseigner tout les champs";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
@@ -45,11 +57,34 @@ public class RegisterEleveActivity extends AppCompatActivity {
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else{
-            Intent intent = new Intent(RegisterEleveActivity.this, EleveActivity.class);
-            startActivity(intent);
+            Eleve eleve = new Eleve();
+            eleve.setNom(nomEleve);
+            eleve.setPrenom(prenomEleve);
+            eleve.setClasse(classeEleve);
+            eleve.setBonne_reponse(0);
+            eleve.setFausse_reponse(0);
+            this.eleveManager.saveEleve(eleve);
         }
-
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(EleveSavedEvent eleveSavedEvent) {
+        Intent intent = new Intent(RegisterEleveActivity.this, MenuActivity.class);
+        startActivity(intent);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent messageEvent) {
+        Toast.makeText(getApplicationContext(), messageEvent.getMessage(), Toast.LENGTH_LONG).show();
+    }
 }
 

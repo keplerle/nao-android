@@ -13,25 +13,34 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
+import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
 import com.example.kinma.test_call_ws.activity.MenuActivity;
-import com.example.kinma.test_call_ws.activity.RegisterProfActivity;
+import com.example.kinma.test_call_ws.manager.NAOManager;
+import com.example.kinma.test_call_ws.model.NAO;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class SynchroniserRobotNAOActivity extends AppCompatActivity {
-
+    @BindView(R.id.EtatConnexionRobotNAO)
     ImageView EtatConnexionRobotNAO;
-    EditText EditTextIPRobot,EditTextNomRobot;
-
+    @BindView(R.id.EditTextIPRobot)
+    EditText EditTextIPRobot;
+    @BindView(R.id.EditTextNomRobot)
+    EditText EditTextNomRobot;
+    NAOManager naoManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synchroniser_robot_nao);
         setTitle(R.string.SynchroniserRobotNAOActivity_label);
-
-        EtatConnexionRobotNAO = (ImageView)findViewById(R.id.EtatConnexionRobotNAO);
-        EtatConnexionRobotNAO.setVisibility(View.INVISIBLE);
-
-        EditTextIPRobot = (EditText)findViewById(R.id.EditTextIPRobot);
-        EditTextNomRobot = (EditText)findViewById(R.id.EditTextNomRobot);
+        ButterKnife.bind(this);
+        this.naoManager=new NAOManager();
     }
 
     public void TesterRobotNAO(View view){
@@ -79,9 +88,34 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
             }
         }else{
-            Intent intent = new Intent(SynchroniserRobotNAOActivity.this, RobotNAOActivity.class);
-            startActivity(intent);
+          NAO nao = new NAO();
+          nao.setIp(IPRobotNAO);
+          nao.setNom(NomRobotNAO);
+          this.naoManager.saveNAO(nao);
         }
 
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(NAOSavedEvent naoSavedEvent) {
+        Intent intent = new Intent(SynchroniserRobotNAOActivity.this, MenuActivity.class);
+        startActivity(intent);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent messageEvent) {
+        Toast.makeText(getApplicationContext(), messageEvent.getMessage(), Toast.LENGTH_LONG).show();
     }
 }

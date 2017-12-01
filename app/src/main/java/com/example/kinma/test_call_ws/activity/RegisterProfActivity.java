@@ -12,6 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
+import com.example.kinma.test_call_ws.activity.Events.ProfSavedEvent;
+import com.example.kinma.test_call_ws.manager.ProfManager;
+import com.example.kinma.test_call_ws.model.Prof;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +36,7 @@ public class RegisterProfActivity extends AppCompatActivity {
     EditText EditTextPassword;
     @BindView(R.id.EditTextVerifPassword)
     EditText EditTextVerifPassword;
+    ProfManager profManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +44,24 @@ public class RegisterProfActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_prof);
         setTitle(R.string.RegisterProfActivity_label);
         ButterKnife.bind(this);
+        this.profManager = new ProfManager();
     }
 
     public void Cree(View view) {
-        String Nom = EditTextNom.getText().toString();
-        String Prenom = EditTextPrenom.getText().toString();
-        String Mail = EditTextMail.getText().toString();
-        String Password = EditTextPassword.getText().toString();
-        String PasswordVerif = EditTextVerifPassword.getText().toString();
+        String nom = EditTextNom.getText().toString();
+        String prenom = EditTextPrenom.getText().toString();
+        String mail = EditTextMail.getText().toString();
+        String password = EditTextPassword.getText().toString();
+        String passwordVerif = EditTextVerifPassword.getText().toString();
 
-        if (Nom.equals("") || Prenom.equals("") || Mail.equals("") || Password.equals("") || PasswordVerif.equals("")) {
+        if (nom.trim().equals("") || prenom.trim().equals("") || mail.trim().equals("") || password.equals("") || passwordVerif.equals("")) {
             String text = "Veuillez remplir tout les champs";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                     0, text.length() - 1,
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
-        } else if ((!Nom.equals("") && !Prenom.equals("") && !Mail.equals("") && !Password.equals("") && !PasswordVerif.equals("")) && (!Password.equals(PasswordVerif))) {
+        } else if (!password.equals(passwordVerif)) {
             String text = "Veuillez rerentrer votre password";
             EditTextPassword.setText("");
             EditTextVerifPassword.setText("");
@@ -61,10 +71,39 @@ public class RegisterProfActivity extends AppCompatActivity {
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else {
-            Intent intent = new Intent(RegisterProfActivity.this, MenuActivity.class);
-            startActivity(intent);
+            Prof prof = new Prof();
+            prof.setNom(nom);
+            prof.setPrenom(prenom);
+            prof.setMail(mail);
+            prof.setPassword(password);
+            this.profManager.saveProf(prof);
+
         }
 
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(ProfSavedEvent profSavedEvent) {
+        Intent intent = new Intent(RegisterProfActivity.this, MenuActivity.class);
+        startActivity(intent);
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent messageEvent) {
+        Toast.makeText(getApplicationContext(), messageEvent.getMessage(), Toast.LENGTH_LONG).show();
     }
 }

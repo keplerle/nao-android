@@ -11,6 +11,8 @@ public class NAO {
     private int temperature_moteur;
     private int temperature_hardware;
     private int batterie;
+    private boolean operande;
+    private boolean operateur;
     private boolean plus;
     private boolean moins;
     private boolean multiple;
@@ -20,13 +22,13 @@ public class NAO {
         super();
     }
 
-    public NAO(int etatRobot,String nomRobot,String ipRobot) {
+    public NAO(int etatRobot, String nomRobot, String ipRobot) {
         this.ip = ip;
         this.nom = nom;
         this.etatRobot = etatRobot;
     }
 
-     public int getTemperature_moteur() {
+    public int getTemperature_moteur() {
         return temperature_moteur;
     }
 
@@ -104,5 +106,21 @@ public class NAO {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public boolean isOperande() {
+        return operande;
+    }
+
+    public void setOperande(boolean operande) {
+        this.operande = operande;
+    }
+
+    public boolean isOperateur() {
+        return operateur;
+    }
+
+    public void setOperateur(boolean operateur) {
+        this.operateur = operateur;
     }
 }

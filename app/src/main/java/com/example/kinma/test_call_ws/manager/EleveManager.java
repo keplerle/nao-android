@@ -1,5 +1,7 @@
 package com.example.kinma.test_call_ws.manager;
 
+import com.example.kinma.test_call_ws.activity.Events.EleveSavedEvent;
+import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.model.Eleve;
 import com.example.kinma.test_call_ws.service.EleveService;
 
@@ -40,6 +42,7 @@ public class EleveManager {
             @Override
             public void onFailure(Call<Eleve> call, Throwable t) {
                 t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de récupérer l'élève"));
             }
         });
     }
@@ -49,12 +52,13 @@ public class EleveManager {
             @Override
             public void onResponse(Call<Eleve> call, Response<Eleve> response) {
                 Eleve eleve = response.body();
-                EventBus.getDefault().post(eleve);
+                EventBus.getDefault().post(new EleveSavedEvent(eleve));
             }
 
             @Override
             public void onFailure(Call<Eleve> call, Throwable t) {
                 t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de créer l'élève"));
             }
         });
     }
@@ -64,12 +68,13 @@ public class EleveManager {
 
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-
+                EventBus.getDefault().post(new MessageEvent("Elève supprimé"));
             }
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t)  {
                 t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de supprimer l'élève"));
             }
         });
     }
@@ -80,12 +85,13 @@ public class EleveManager {
 
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-
+                EventBus.getDefault().post(new MessageEvent("Elève modifié"));
             }
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t)   {
                 t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de modifier l'élève"));
             }
         });
     }

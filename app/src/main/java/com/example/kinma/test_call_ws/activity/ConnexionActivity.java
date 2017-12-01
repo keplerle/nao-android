@@ -29,6 +29,8 @@ public class ConnexionActivity extends AppCompatActivity {
     @BindView(R.id.EditTextPasswordProf)
     EditText EditTextPasswordProf;
     ProfManager profManager;
+    String MailUtilisateur;
+    String PasswordUtilisateur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,8 @@ public class ConnexionActivity extends AppCompatActivity {
     }
 
     public void Connexion(View view) {
-        String MailUtilisateur = EditTextUtilisateur.getText().toString();
-        String PasswordUtilisateur = EditTextPasswordProf.getText().toString();
+        MailUtilisateur = EditTextUtilisateur.getText().toString();
+        PasswordUtilisateur = EditTextPasswordProf.getText().toString();
         if (MailUtilisateur.equals("") && PasswordUtilisateur.equals("")) {
             String text = "Veuillez rentrer un mail utilisateur et un password";
             Spannable centeredText = new SpannableString(text);
@@ -69,12 +71,11 @@ public class ConnexionActivity extends AppCompatActivity {
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else {
-            String type = "login";
-            Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
-            startActivity(intent);
+            this.profManager.getProfByMail(MailUtilisateur);
+
         }
     }
-/*
+
     @Override
     public void onStart() {
         super.onStart();
@@ -89,13 +90,10 @@ public class ConnexionActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Prof prof) {
-        if ("OK".equals()) {
+        if (PasswordUtilisateur.equals(prof.getPassword())) {
             Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
             startActivity(intent);
         }
     }
-
-    ;*/
-
 }
 

@@ -12,8 +12,11 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ProfService {
-    @GET("/prof")
+    @GET("/prof/")
     Call<Prof> getProf();
+
+    @GET("/prof/{mail}")
+    Call<Prof> getProfByMail(@Path("mail") String mail);
 
     @POST("/prof")
     @FormUrlEncoded
