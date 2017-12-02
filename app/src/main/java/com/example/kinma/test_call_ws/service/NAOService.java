@@ -12,16 +12,16 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface NAOService {
-    @GET("/nao/{ip}")
+    @GET("rest/nao/{ip}")
     Call<NAO> getNAO(@Path("ip") String ip);
 
-    @POST("/nao")
+    @POST("rest/nao")
     @FormUrlEncoded
     Call<NAO> saveNAO(@Body NAO nao);
 
-    @DELETE("/nao/{ip}")
+    @DELETE("rest/nao/{ip}")
     Call<Boolean> deleteNAO(@Path("ip") String ip);
 
-    @PUT("/nao")
+    @PUT("rest/nao")
     Call<Boolean> updateNAO();
 }

@@ -12,17 +12,17 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface EleveService {
-    @GET("/eleve/{prof}")
+    @GET("rest/eleve/{prof}")
     Call<Eleve> getEleve(@Path("prof") String prof);
 
-    @POST("/eleve")
+    @POST("rest/eleve")
     @FormUrlEncoded
     Call<Eleve> saveEleve(@Body Eleve eleve);
 /*
     @DELETE("/eleve/{id}")
     Call<Boolean> deleteEleve(@Path("id") long id);
 */
-    @PUT("/eleve")
+    @PUT("rest/eleve")
     Call<Boolean> updateEleve();
 
 
