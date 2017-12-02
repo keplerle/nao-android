@@ -8,12 +8,14 @@ import com.example.kinma.test_call_ws.service.ProfService;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfManager {
 
@@ -26,11 +28,14 @@ public class ProfManager {
         Retrofit retrofit = new Retrofit.Builder()
                 // .baseUrl("http://api.example.com")
                 // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.215.19:8080")
+                .baseUrl("http://192.168.0.34:8080")
+                //.baseUrl("http://192.168.215.19:8080")
+                .addConverterFactory(GsonConverterFactory.create())
+
                 .build();
         this.profService = retrofit.create(ProfService.class);
     }
-
+/*
     public void getProf() {
         profService.getProf().enqueue(new Callback<Prof>() {
             @Override
@@ -46,7 +51,7 @@ public class ProfManager {
                 EventBus.getDefault().post(new MessageEvent("Impossible de récuperer le prof"));
             }
         });
-    }
+    }*/
 
     public void getProfByMail(String mail) {
         profService.getProfByMail(mail).enqueue(new Callback<Prof>() {
@@ -55,12 +60,13 @@ public class ProfManager {
                 //poste un evenement avec EventBus. L'evenement contient Prof
                 Prof prof = response.body();
                 EventBus.getDefault().post(prof);
+
             }
 
             @Override
             public void onFailure(Call<Prof> call, Throwable t) {
                 t.printStackTrace();
-                EventBus.getDefault().post(new ConnexionEvent("Connexion réussis"));
+                EventBus.getDefault().post(new MessageEvent("Connexion échoué"));
             }
         });
     }
@@ -82,6 +88,7 @@ public class ProfManager {
             }
         });
     }
+    /*
     public void deleteProf(Long id) {
         profService.deleteProf(id).enqueue(new Callback<Boolean>() {
             @Override
@@ -111,5 +118,5 @@ public class ProfManager {
                 EventBus.getDefault().post(new MessageEvent("Impossible de modifier le prof"));
             }
         });
-    }
+    }*/
 }

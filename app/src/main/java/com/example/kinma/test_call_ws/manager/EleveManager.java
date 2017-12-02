@@ -13,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EleveManager {
 
@@ -25,11 +26,14 @@ public class EleveManager {
         Retrofit retrofit = new Retrofit.Builder()
                 // .baseUrl("http://api.example.com")
                 // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.215.19:8080")
+                .baseUrl("http://192.168.0.34:8080")
+                //.baseUrl("http://192.168.215.19:8080")
+                .addConverterFactory(GsonConverterFactory.create())
+
                 .build();
         this.eleveService = retrofit.create(EleveService.class);
     }
-
+/*
     public void getEleve() {
         eleveService.getEleve().enqueue(new Callback<Eleve>() {
             @Override
@@ -45,7 +49,7 @@ public class EleveManager {
                 EventBus.getDefault().post(new MessageEvent("Impossible de récupérer l'élève"));
             }
         });
-    }
+    }*/
 
     public void saveEleve(Eleve eleve) {
         eleveService.saveEleve(eleve).enqueue(new Callback<Eleve>() {
@@ -62,7 +66,7 @@ public class EleveManager {
             }
         });
     }
-
+/*
     public void deleteEleve(Long id) {
         eleveService.deleteEleve(id).enqueue(new Callback<Boolean>() {
 
@@ -78,7 +82,7 @@ public class EleveManager {
             }
         });
     }
-
+*/
 
     public void updateEleve() {
         eleveService.updateEleve().enqueue(new Callback<Boolean>() {

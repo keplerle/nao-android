@@ -12,8 +12,8 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface NAOService {
-    @GET("/nao")
-    Call<NAO> getNAO();
+    @GET("/nao/{ip}")
+    Call<NAO> getNAO(@Path("ip") String ip);
 
     @POST("/nao")
     @FormUrlEncoded

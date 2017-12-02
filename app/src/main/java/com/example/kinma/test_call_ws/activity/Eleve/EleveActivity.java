@@ -6,15 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.manager.EleveManager;
 
 
 public class EleveActivity extends AppCompatActivity {
-
+    EleveManager eleveManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleve);
-        setTitle(R.string.EleveActivity_label);
+        this.eleveManager=new EleveManager();
+
     }
 
     public void CreeEleve(View view) {

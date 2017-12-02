@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NAOManager {
 
@@ -28,13 +29,16 @@ public class NAOManager {
         Retrofit retrofit=new Retrofit.Builder()
                // .baseUrl("http://api.example.com")
                // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.215.19:8080")
+                .baseUrl("http://192.168.0.34:8080")
+                //.baseUrl("http://192.168.215.19:8080")
+                .addConverterFactory(GsonConverterFactory.create())
+
                 .build();
         this.naoService=retrofit.create(NAOService.class);
     }
 
-    public void getNAO() {
-        naoService.getNAO().enqueue(new Callback<NAO>() {
+    public void getNAOByIp(String ip) {
+        naoService.getNAO(ip).enqueue(new Callback<NAO>() {
             @Override
             public void onResponse(Call<NAO> call, Response<NAO> response) {
                 //poste un evenement avec EventBus. L'evenement contient NAO

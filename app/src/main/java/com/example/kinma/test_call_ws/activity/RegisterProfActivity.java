@@ -77,10 +77,7 @@ public class RegisterProfActivity extends AppCompatActivity {
             prof.setMail(mail);
             prof.setPassword(password);
             this.profManager.saveProf(prof);
-
         }
-
-
     }
 
     @Override
