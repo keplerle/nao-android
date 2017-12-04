@@ -10,10 +10,11 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface EleveService {
-    @GET("rest/eleve/{prof}")
-    Call<Eleve> getEleve(@Path("prof") String prof);
+    @GET("rest/eleve")
+    Call<Eleve> getEleve(@Query("prof") String prof);
 
     @POST("rest/eleve")
     @FormUrlEncoded

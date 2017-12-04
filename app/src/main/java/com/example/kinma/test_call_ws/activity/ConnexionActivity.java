@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.activity.Events.ConnexionEvent;
 import com.example.kinma.test_call_ws.manager.ProfManager;
 import com.example.kinma.test_call_ws.model.Prof;
 
@@ -89,8 +90,8 @@ public class ConnexionActivity extends AppCompatActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(Prof prof) {
-        if (PasswordUtilisateur.equals(prof.getPassword())) {
+    public void onMessageEvent(ConnexionEvent connexionEvent) {
+        if (connexionEvent.getProf()!=null&&PasswordUtilisateur.equals(connexionEvent.getProf().getPassword())) {
             Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
             startActivity(intent);
         }

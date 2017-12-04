@@ -9,11 +9,11 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ProfService {
-    @GET("rest/prof/{mail}")
-    Call<Prof> getProfByMail(@Path("mail") String mail);
+    @GET("rest/prof")
+    Call<Prof> getProfByMail(@Query("mail") String mail);
 /*
     @GET("/prof/{mail}")
     Call<Prof> getProfByMail(@Path("mail") String mail);

@@ -1,17 +1,18 @@
 package com.example.kinma.test_call_ws.activity.Events;
 
+import com.example.kinma.test_call_ws.model.Prof;
+
 /**
  * Created by kinma on 30/11/2017.
  */
 
 public class ConnexionEvent {
-
-    private String message;
-    public ConnexionEvent(String message){
-        this.message=message;
+    private Prof prof;
+    public ConnexionEvent(Prof prof){
+        this.prof=prof;
     }
 
-    public String getMessage() {
-        return message;
+    public Prof getProf() {
+        return prof;
     }
 }

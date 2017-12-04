@@ -1,5 +1,6 @@
 package com.example.kinma.test_call_ws.manager;
 
+
 import com.example.kinma.test_call_ws.activity.Events.ConnexionEvent;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.activity.Events.ProfSavedEvent;
@@ -28,7 +29,8 @@ public class ProfManager {
         Retrofit retrofit = new Retrofit.Builder()
                 // .baseUrl("http://api.example.com")
                 // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.0.34:8080/")
+                .baseUrl("http://192.168.0.22:8080/")
+                //.baseUrl("http://192.168.0.34:8080/")
                 //.baseUrl("http://192.168.215.19:8080")
                 .addConverterFactory(GsonConverterFactory.create())
 
@@ -59,8 +61,7 @@ public class ProfManager {
             public void onResponse(Call<Prof> call, Response<Prof> response) {
                 //poste un evenement avec EventBus. L'evenement contient Prof
                 Prof prof = response.body();
-                EventBus.getDefault().post(prof);
-
+                EventBus.getDefault().post(new ConnexionEvent(prof));
             }
 
             @Override

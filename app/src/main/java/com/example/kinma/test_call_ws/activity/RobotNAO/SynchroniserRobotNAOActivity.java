@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
+import com.example.kinma.test_call_ws.activity.Events.NAOUpdatedEvent;
 import com.example.kinma.test_call_ws.activity.MenuActivity;
 import com.example.kinma.test_call_ws.manager.NAOManager;
 import com.example.kinma.test_call_ws.model.NAO;
@@ -57,8 +58,8 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
             EtatConnexionRobotNAO.setVisibility(View.INVISIBLE);
         } else {
-            EtatConnexionRobotNAO.setVisibility(View.VISIBLE);
-            EtatConnexionRobotNAO.setImageResource(R.drawable.ok);
+
+
         }
     }
 
@@ -108,10 +109,15 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(NAOSavedEvent naoSavedEvent) {
+    public void onMessageEvent(NAOUpdatedEvent naoUpdatedEvent) {
         Intent intent = new Intent(SynchroniserRobotNAOActivity.this, MenuActivity.class);
         startActivity(intent);
 
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(NAOSavedEvent naoSavedEvent) {
+        EtatConnexionRobotNAO.setVisibility(View.VISIBLE);
+        EtatConnexionRobotNAO.setImageResource(R.drawable.ok);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
