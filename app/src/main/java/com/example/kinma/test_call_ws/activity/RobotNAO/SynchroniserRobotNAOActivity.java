@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.activity.Events.ConnexionEvent;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOFoundEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
@@ -20,6 +22,7 @@ import com.example.kinma.test_call_ws.activity.Events.NAOUpdatedEvent;
 import com.example.kinma.test_call_ws.activity.MenuActivity;
 import com.example.kinma.test_call_ws.manager.NAOManager;
 import com.example.kinma.test_call_ws.model.NAO;
+import com.example.kinma.test_call_ws.model.Prof;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -92,10 +95,13 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
             }
         } else {
+
             NAO nao = new NAO();
             nao.setIp(IPRobotNAO);
             nao.setNom(NomRobotNAO);
-            this.naoManager.updateNAO(nao);
+            nao.setMailprof(PublicContext.currentProf.getMail());
+            //this.naoManager.updateNAO(nao);
+            //this.naoManager.saveNAO(nao);
         }
 
     }
@@ -126,6 +132,12 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
             //Icone vert à affiché
         }
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(NAOSavedEvent naoSavedEvent) {
+        Intent intent = new Intent(SynchroniserRobotNAOActivity.this, RobotNAOActivity.class);
+        startActivity(intent);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

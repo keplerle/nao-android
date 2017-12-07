@@ -29,7 +29,7 @@ public class ProfManager {
         Retrofit retrofit = new Retrofit.Builder()
                 // .baseUrl("http://api.example.com")
                 // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.0.22:8080/")
+                .baseUrl("http://172.20.10.2:8080/")
                 //.baseUrl("http://192.168.0.34:8080/")
                 //.baseUrl("http://192.168.215.19:8080")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -89,7 +89,7 @@ public class ProfManager {
             }
         });
     }
-    /*
+
     public void deleteProf(Long id) {
         profService.deleteProf(id).enqueue(new Callback<Boolean>() {
             @Override
@@ -105,8 +105,8 @@ public class ProfManager {
             }
         });
     }
-    public void updateProf() {
-        profService.updateProf().enqueue(new Callback<Boolean>() {
+    public void updateProf(Prof prof) {
+        profService.updateProf(prof).enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 EventBus.getDefault().post(new MessageEvent("Prof à jour"));
@@ -119,5 +119,5 @@ public class ProfManager {
                 EventBus.getDefault().post(new MessageEvent("Impossible de modifier le prof"));
             }
         });
-    }*/
+    }
 }

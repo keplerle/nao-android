@@ -92,6 +92,7 @@ public class LancerExerciceActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NAOUpdatedEvent naoUpdatedEvent) {
         Intent intent = new Intent(LancerExerciceActivity.this, ExerciceActivity.class);
+        intent.putExtra("toto", "toti");
         startActivity(intent);
 
     }

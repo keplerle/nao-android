@@ -5,6 +5,7 @@ import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.model.Eleve;
 import com.example.kinma.test_call_ws.service.EleveService;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.greenrobot.eventbus.EventBus;
@@ -26,7 +27,7 @@ public class EleveManager {
         Retrofit retrofit = new Retrofit.Builder()
                 // .baseUrl("http://api.example.com")
                 // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.0.22:8080/")
+                .baseUrl("http://172.20.10.2:8080/")
                 //.baseUrl("http://192.168.0.34:8080/")
                 //.baseUrl("http://192.168.215.19:8080")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -34,9 +35,9 @@ public class EleveManager {
                 .build();
         this.eleveService = retrofit.create(EleveService.class);
     }
-/*
-    public void getEleve() {
-        eleveService.getEleve().enqueue(new Callback<Eleve>() {
+
+    public void getEleveByProf(String prof) {
+        eleveService.getEleve(prof).enqueue(new Callback<Eleve>() {
             @Override
             public void onResponse(Call<Eleve> call, Response<Eleve> response) {
                 //poste un evenement avec EventBus. L'evenement contient Eleve
@@ -46,6 +47,23 @@ public class EleveManager {
 
             @Override
             public void onFailure(Call<Eleve> call, Throwable t) {
+                t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de récupérer l'élève"));
+            }
+        });
+    }
+/*
+    public void getAllEleveByProf(String prof) {
+        eleveService.getAllEleve(prof).enqueue(new Callback<List<Eleve>>() {
+            @Override
+            public void onResponse(Call<List<Eleve>> call, Response<List<Eleve>> response) {
+                //poste un evenement avec EventBus. L'evenement contient Eleve
+                List<Eleve> eleves = response.body();
+                EventBus.getDefault().post(eleve);
+            }
+
+            @Override
+            public void onFailure(Call<List<Eleve>> call, Throwable t) {
                 t.printStackTrace();
                 EventBus.getDefault().post(new MessageEvent("Impossible de récupérer l'élève"));
             }
@@ -67,7 +85,7 @@ public class EleveManager {
             }
         });
     }
-/*
+
     public void deleteEleve(Long id) {
         eleveService.deleteEleve(id).enqueue(new Callback<Boolean>() {
 
@@ -83,7 +101,7 @@ public class EleveManager {
             }
         });
     }
-*/
+
 
     public void updateEleve() {
         eleveService.updateEleve().enqueue(new Callback<Boolean>() {

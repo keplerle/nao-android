@@ -14,7 +14,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="250dp"
         android:background="@drawable/shape_button"
-        android:onClick="CreerEleve"
         android:text="Créer un élève"
         android:textAlignment="center"
         android:textAllCaps="false"

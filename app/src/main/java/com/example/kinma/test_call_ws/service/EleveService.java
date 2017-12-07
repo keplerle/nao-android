@@ -16,13 +16,15 @@ public interface EleveService {
     @GET("rest/eleve")
     Call<Eleve> getEleve(@Query("prof") String prof);
 
+    @GET("rest/eleve/prof")
+    Call<Eleve> getAllEleve(@Query("prof") String prof);
+
     @POST("rest/eleve")
-    @FormUrlEncoded
     Call<Eleve> saveEleve(@Body Eleve eleve);
-/*
-    @DELETE("/eleve/{id}")
-    Call<Boolean> deleteEleve(@Path("id") long id);
-*/
+
+    @DELETE("/eleve")
+    Call<Boolean> deleteEleve(@Query("id") Long id);
+
     @PUT("rest/eleve")
     Call<Boolean> updateEleve();
 

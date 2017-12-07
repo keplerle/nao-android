@@ -29,9 +29,7 @@ public class NAOManager {
         Retrofit retrofit=new Retrofit.Builder()
                // .baseUrl("http://api.example.com")
                // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.0.22:8080/")
-                //.baseUrl("http://192.168.0.34:8080/")
-                //.baseUrl("http://192.168.215.19:8080")
+                .baseUrl("http://172.20.10.2:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
 
                 .build();
@@ -39,7 +37,24 @@ public class NAOManager {
     }
 
     public void getNAOByIp(String ip) {
-        naoService.getNAO(ip).enqueue(new Callback<NAO>() {
+        naoService.getNAOip(ip).enqueue(new Callback<NAO>() {
+            @Override
+            public void onResponse(Call<NAO> call, Response<NAO> response) {
+                //poste un evenement avec EventBus. L'evenement contient NAO
+                NAO nao = response.body();
+                EventBus.getDefault().post(nao);
+            }
+
+            @Override
+            public void onFailure(Call<NAO> call, Throwable t) {
+                t.printStackTrace();
+                EventBus.getDefault().post(new MessageEvent("Impossible de récupérer le robot"));
+            }
+        });
+    }
+
+    public void getNAOByProf(String mailprof) {
+        naoService.getNAOprof(mailprof).enqueue(new Callback<NAO>() {
             @Override
             public void onResponse(Call<NAO> call, Response<NAO> response) {
                 //poste un evenement avec EventBus. L'evenement contient NAO

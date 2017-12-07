@@ -13,7 +13,7 @@ public class ExerciceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercice);
-        setTitle(R.string.ExerciceActivity_label);
+        setTitle(R.string.ExerciceActivity_label + savedInstanceState.get("totoS"));
     }
 
     public void CreerExercice(View view){

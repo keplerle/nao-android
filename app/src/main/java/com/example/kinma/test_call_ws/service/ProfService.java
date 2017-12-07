@@ -14,18 +14,14 @@ import retrofit2.http.Query;
 public interface ProfService {
     @GET("rest/prof")
     Call<Prof> getProfByMail(@Query("mail") String mail);
-/*
-    @GET("/prof/{mail}")
-    Call<Prof> getProfByMail(@Path("mail") String mail);
-*/
+
     @POST("rest/prof")
-    //@FormUrlEncoded
     Call<Prof> saveProf(@Body Prof prof);
-/*
-    @DELETE("/prof/{id}")
-    Call<Boolean> deleteProf(@Path("id") long id);
+
+    @DELETE("/prof")
+    Call<Boolean> deleteProf(@Query("id") long id);
 
     @PUT("/prof")
-    Call<Boolean> updateProf();
-*/
+    Call<Boolean> updateProf(@Body Prof prof);
+
 }

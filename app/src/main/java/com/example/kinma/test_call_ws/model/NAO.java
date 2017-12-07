@@ -5,7 +5,7 @@ package com.example.kinma.test_call_ws.model;
  */
 
 public class NAO {
-    private Long id;
+    private String mailprof;
     private String ip;
     private String nom;
     private int etatRobot;
@@ -23,6 +23,14 @@ public class NAO {
         super();
     }
 
+    public void setMailprof(String mailprof) {
+        this.mailprof = mailprof;
+    }
+
+    public String getMailprof() {
+        return mailprof;
+    }
+
     public NAO(int etatRobot, String nomRobot, String ipRobot) {
         this.ip = ip;
         this.nom = nom;
@@ -37,13 +45,6 @@ public class NAO {
         return temperature_moteur;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setTemperature_moteur(int temperature_moteur) {
         this.temperature_moteur = temperature_moteur;

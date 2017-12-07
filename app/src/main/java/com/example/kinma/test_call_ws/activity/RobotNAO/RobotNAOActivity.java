@@ -7,8 +7,15 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.kinma.test_call_ws.R;
+import com.example.kinma.test_call_ws.activity.Events.ConnexionEvent;
+import com.example.kinma.test_call_ws.manager.NAOManager;
 import com.example.kinma.test_call_ws.model.NAO;
 import com.example.kinma.test_call_ws.RobotNAOAdapter;
+import com.example.kinma.test_call_ws.model.Prof;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +26,8 @@ import butterknife.ButterKnife;
 public class RobotNAOActivity extends AppCompatActivity {
     @BindView(R.id.ListViewRobotSynchronise)
     ListView ListViewRobotSynchronise;
-
+    NAOManager naoManager;
+    Prof prof;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +35,7 @@ public class RobotNAOActivity extends AppCompatActivity {
         setTitle(R.string.RobotNAOActivity_label);
         ButterKnife.bind(this);
         afficherListeRobotNAO();
+        this.naoManager=new NAOManager();
 
     }
 
@@ -37,6 +46,7 @@ public class RobotNAOActivity extends AppCompatActivity {
     }
 
     private void afficherListeRobotNAO() {
+        this.naoManager.getNAOByProf(prof.getMail());
         List<NAO> robotNAO = synchroniserRobotNAO();
         RobotNAOAdapter robotNAOAdapter = new RobotNAOAdapter(RobotNAOActivity.this, robotNAO);
         ListViewRobotSynchronise.setAdapter(robotNAOAdapter);
@@ -47,6 +57,18 @@ public class RobotNAOActivity extends AppCompatActivity {
     public void SynchroniserRobotNAO1 (View view){
         Intent intent = new Intent(RobotNAOActivity.this, SynchroniserRobotNAOActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }
 

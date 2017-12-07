@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.activity.Events.ProfSavedEvent;
@@ -37,7 +38,7 @@ public class RegisterProfActivity extends AppCompatActivity {
     @BindView(R.id.EditTextVerifPassword)
     EditText EditTextVerifPassword;
     ProfManager profManager;
-
+    Prof prof;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ public class RegisterProfActivity extends AppCompatActivity {
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else {
-            Prof prof = new Prof();
+            prof = new Prof();
             prof.setNom(nom);
             prof.setPrenom(prenom);
             prof.setMail(mail);
@@ -94,8 +95,10 @@ public class RegisterProfActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ProfSavedEvent profSavedEvent) {
+        PublicContext.currentProf=prof;
         Intent intent = new Intent(RegisterProfActivity.this, MenuActivity.class);
         startActivity(intent);
+
 
     }
 

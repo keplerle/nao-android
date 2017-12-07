@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.activity.MenuActivity;
 import com.example.kinma.test_call_ws.activity.Events.EleveSavedEvent;
@@ -26,6 +27,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RegisterEleveActivity extends AppCompatActivity {
     @BindView(R.id.EditTextPrenomEleve)
@@ -44,7 +46,7 @@ public class RegisterEleveActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         this.eleveManager = new EleveManager();
     }
-
+    @OnClick(R.id.ButtonCreeEleve)
     public void CreerEleve(View view){
         String nomEleve = EditTextNomEleve.getText().toString();
         String prenomEleve = EditTextPrenomEleve.getText().toString();
@@ -61,6 +63,7 @@ public class RegisterEleveActivity extends AppCompatActivity {
             eleve.setNom(nomEleve);
             eleve.setPrenom(prenomEleve);
             eleve.setClasse(classeEleve);
+            eleve.setProf(PublicContext.currentProf.getMail());
             eleve.setBonne_reponse(0);
             eleve.setFausse_reponse(0);
             this.eleveManager.saveEleve(eleve);
@@ -79,7 +82,7 @@ public class RegisterEleveActivity extends AppCompatActivity {
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(EleveSavedEvent eleveSavedEvent) {
-        Intent intent = new Intent(RegisterEleveActivity.this, MenuActivity.class);
+        Intent intent = new Intent(RegisterEleveActivity.this, EleveActivity.class);
         startActivity(intent);
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
