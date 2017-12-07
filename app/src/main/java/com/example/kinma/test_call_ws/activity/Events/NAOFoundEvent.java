@@ -3,9 +3,9 @@ package com.example.kinma.test_call_ws.activity.Events;
 import com.example.kinma.test_call_ws.model.NAO;
 
 
-public class NAOSavedEvent {
+public class NAOFoundEvent {
     private NAO nao;
-    public NAOSavedEvent(NAO nao){
+    public NAOFoundEvent(NAO nao){
         this.nao = nao;
     }
 

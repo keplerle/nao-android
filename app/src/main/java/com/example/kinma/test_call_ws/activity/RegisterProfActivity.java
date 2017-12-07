@@ -54,7 +54,7 @@ public class RegisterProfActivity extends AppCompatActivity {
         String password = EditTextPassword.getText().toString();
         String passwordVerif = EditTextVerifPassword.getText().toString();
 
-        if (nom.trim().equals("") || prenom.trim().equals("") || mail.trim().equals("") || password.equals("") || passwordVerif.equals("")) {
+        if (nom.equals("") || prenom.equals("") || mail.trim().equals("") || password.equals("") || passwordVerif.equals("")) {
             String text = "Veuillez remplir tout les champs";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),

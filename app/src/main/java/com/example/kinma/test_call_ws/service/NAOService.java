@@ -24,5 +24,5 @@ public interface NAOService {
     Call<Boolean> deleteNAO(@Query("ip") String ip);
 
     @PUT("rest/nao")
-    Call<Boolean> updateNAO();
+    Call<NAO> updateNAO(@Body NAO nao);
 }

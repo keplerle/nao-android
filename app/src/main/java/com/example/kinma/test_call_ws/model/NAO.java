@@ -28,6 +28,10 @@ public class NAO {
         this.nom = nom;
         this.etatRobot = etatRobot;
     }
+    public NAO(String nomRobot, String ipRobot) {
+        this.ip = ip;
+        this.nom = nom;
+    }
 
     public int getTemperature_moteur() {
         return temperature_moteur;

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
+import com.example.kinma.test_call_ws.activity.Events.NAOFoundEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOUpdatedEvent;
 import com.example.kinma.test_call_ws.activity.MenuActivity;
@@ -49,7 +50,7 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
 
     public void TesterRobotNAO(View view) {
         IPRobotNAO = EditTextIPRobot.getText().toString();
-        if (IPRobotNAO.equals("")) {
+        if (IPRobotNAO.trim().equals("")) {
             String text = "Veuillez renseigner l'adresse IP";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
@@ -58,7 +59,7 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
             EtatConnexionRobotNAO.setVisibility(View.INVISIBLE);
         } else {
-
+            naoManager.getNAOByIp(IPRobotNAO);
 
         }
     }
@@ -67,7 +68,7 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
         IPRobotNAO = EditTextIPRobot.getText().toString();
         NomRobotNAO = EditTextNomRobot.getText().toString();
 
-        if (IPRobotNAO.equals("") || NomRobotNAO.equals("")) {
+        if (IPRobotNAO.trim().equals("") || NomRobotNAO.trim().equals("")) {
             if (IPRobotNAO.equals("") && NomRobotNAO.equals("")) {
                 String text = "Veuillez renseigner tout les champs";
                 Spannable centeredText = new SpannableString(text);
@@ -75,7 +76,7 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
                         0, text.length() - 1,
                         Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                 Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
-            } else if (IPRobotNAO.equals("")) {
+            } else if (IPRobotNAO.trim().equals("")) {
                 String text = "Veuillez renseigner l'adresse IP";
                 Spannable centeredText = new SpannableString(text);
                 centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
@@ -91,7 +92,10 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
             }
         } else {
-            this.naoManager.getNAOByIp(IPRobotNAO);
+            NAO nao = new NAO();
+            nao.setIp(IPRobotNAO);
+            nao.setNom(NomRobotNAO);
+            this.naoManager.updateNAO(nao);
         }
 
     }
@@ -114,10 +118,14 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(NAOSavedEvent naoSavedEvent) {
-        EtatConnexionRobotNAO.setVisibility(View.VISIBLE);
-        EtatConnexionRobotNAO.setImageResource(R.drawable.ok);
+    public void onMessageEvent(NAOFoundEvent naoFoundEvent) {
+        if(naoFoundEvent.getNao()!=null&&naoFoundEvent.getNao().getIp().equals(IPRobotNAO))
+        {
+            //Icone vert à affiché
+        }
+
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

@@ -88,18 +88,19 @@ public class NAOManager {
     }
 
 
-    public void updateNAO() {
-        naoService.updateNAO().enqueue(new Callback<Boolean>() {
+    public void updateNAO(NAO nao) {
+        naoService.updateNAO(nao).enqueue(new Callback<NAO>() {
 
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                EventBus.getDefault().post(new MessageEvent("Robot NAO modifié"));
+            public void onResponse(Call<NAO> call, Response<NAO> response) {
+                NAO nao = response.body();
+                EventBus.getDefault().post(new NAOSavedEvent(nao));
             }
 
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t)   {
+            public void onFailure(Call<NAO> call, Throwable t)   {
                 t.printStackTrace();
-                EventBus.getDefault().post(new MessageEvent("Impossible de modifier le robot"));
+                EventBus.getDefault().post(new MessageEvent("Impossible de synchroniser le robot"));
             }
         });
     }

@@ -13,8 +13,11 @@ import com.example.kinma.test_call_ws.RobotNAOAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RobotNAOActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class RobotNAOActivity extends AppCompatActivity {
+    @BindView(R.id.ListViewRobotSynchronise)
     ListView ListViewRobotSynchronise;
 
     @Override
@@ -22,7 +25,7 @@ public class RobotNAOActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_robot_nao);
         setTitle(R.string.RobotNAOActivity_label);
-        ListViewRobotSynchronise = (ListView)findViewById(R.id.ListViewRobotSynchronise);
+        ButterKnife.bind(this);
         afficherListeRobotNAO();
 
     }
