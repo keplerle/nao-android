@@ -7,15 +7,14 @@
     tools:context="com.example.kinma.test_call_ws.activity.Exercice.LancerExerciceActivity">
 
     <Button
-        android:id="@+id/ButtonLancerExercice"
+        android:id="@+id/ButtonCreationExercice"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/shape_button"
-        android:onClick="LancerExercice"
-        android:text="Lancer l'exercice"
+        android:text="Créer l'exercice"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/textColor"

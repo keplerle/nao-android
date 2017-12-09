@@ -30,6 +30,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SynchroniserRobotNAOActivity extends AppCompatActivity {
     @BindView(R.id.EtatConnexionRobotNAO)
@@ -51,7 +52,8 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
         this.naoManager = new NAOManager();
     }
 
-    public void TesterRobotNAO(View view) {
+    @OnClick(R.id.ButtonTesterRobot)
+    public void TesterRobotNAO() {
         IPRobotNAO = EditTextIPRobot.getText().toString();
         if (IPRobotNAO.trim().equals("")) {
             String text = "Veuillez renseigner l'adresse IP";
@@ -67,7 +69,8 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
         }
     }
 
-    public void SynchroniserRobotNAO(View view) {
+    @OnClick(R.id.ButtonSynchronisationRobot)
+    public void SynchroniserRobotNAO() {
         IPRobotNAO = EditTextIPRobot.getText().toString();
         NomRobotNAO = EditTextNomRobot.getText().toString();
 
@@ -127,8 +130,7 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NAOFoundEvent naoFoundEvent) {
-        if(naoFoundEvent.getNao()!=null&&naoFoundEvent.getNao().getIp().equals(IPRobotNAO))
-        {
+        if (naoFoundEvent.getNao() != null && naoFoundEvent.getNao().getIp().equals(IPRobotNAO)) {
             //Icone vert à affiché
         }
 

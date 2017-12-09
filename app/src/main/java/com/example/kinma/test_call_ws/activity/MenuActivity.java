@@ -10,26 +10,33 @@ import com.example.kinma.test_call_ws.activity.Eleve.EleveActivity;
 import com.example.kinma.test_call_ws.activity.Exercice.ExerciceActivity;
 import com.example.kinma.test_call_ws.activity.RobotNAO.RobotNAOActivity;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        ButterKnife.bind(this);
         setTitle(R.string.MenuActivity_label);
     }
 
-    public void RobotNAO(View view) {
+    @OnClick(R.id.ButtonRobotNAO)
+    public void RobotNAO() {
         Intent intent = new Intent(MenuActivity.this, RobotNAOActivity.class);
         startActivity(intent);
     }
 
-    public void Exercice(View view) {
+    @OnClick(R.id.ButtonExercice)
+    public void Exercice() {
         Intent intent = new Intent(MenuActivity.this, ExerciceActivity.class);
         startActivity(intent);
     }
 
-    public void Eleve(View view) {
+    @OnClick(R.id.ButtonEleve)
+    public void Eleve() {
         Intent intent = new Intent(MenuActivity.this, EleveActivity.class);
         startActivity(intent);
     }

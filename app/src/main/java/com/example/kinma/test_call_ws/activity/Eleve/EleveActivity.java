@@ -8,6 +8,9 @@ import android.view.View;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.manager.EleveManager;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class EleveActivity extends AppCompatActivity {
     EleveManager eleveManager;
@@ -15,11 +18,12 @@ public class EleveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleve);
+        ButterKnife.bind(this);
         this.eleveManager=new EleveManager();
 
     }
-
-    public void CreeEleve(View view) {
+@OnClick(R.id.ButtonCreerEleve)
+    public void CreeEleve() {
         Intent intent = new Intent(EleveActivity.this, RegisterEleveActivity.class);
         startActivity(intent);
     }

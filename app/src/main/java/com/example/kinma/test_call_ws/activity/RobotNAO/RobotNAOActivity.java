@@ -22,6 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RobotNAOActivity extends AppCompatActivity {
     @BindView(R.id.ListViewRobotSynchronise)
@@ -53,8 +54,8 @@ public class RobotNAOActivity extends AppCompatActivity {
 
     }
 
-
-    public void SynchroniserRobotNAO1 (View view){
+    @OnClick(R.id.ButtonSynchroniserRobot)
+    public void SynchroniserRobotNAO1 (){
         Intent intent = new Intent(RobotNAOActivity.this, SynchroniserRobotNAOActivity.class);
         startActivity(intent);
     }

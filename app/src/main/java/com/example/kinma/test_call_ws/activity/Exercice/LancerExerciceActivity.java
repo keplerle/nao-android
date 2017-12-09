@@ -24,6 +24,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LancerExerciceActivity extends AppCompatActivity {
     @BindView(R.id.RadioButtonMultiplication)
@@ -44,9 +45,11 @@ public class LancerExerciceActivity extends AppCompatActivity {
         setTitle(R.string.LancerExerciceActivity_label);
         ButterKnife.bind(this);
         this.naoManager = new NAOManager();
+        savedInstanceState.get("totoS");
     }
 
-    public void LancerExercice(View view) {
+    @OnClick(R.id.ButtonCreationExercice)
+    public void LancerExercice() {
         if (!RadioButtonAddition.isChecked() && !RadioButtonDivision.isChecked() && !RadioButtonMultiplication.isChecked() && !RadioButtonSoustraction.isChecked()) {
             String text = "Veuillez sélectionner au moins un type d'opérateur";
             Spannable centeredText = new SpannableString(text);
@@ -55,19 +58,19 @@ public class LancerExerciceActivity extends AppCompatActivity {
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else {
-            if(RadioButtonAddition.isChecked()){
+            if (RadioButtonAddition.isChecked()) {
                 nao.setPlus(true);
             }
 
-            if(RadioButtonSoustraction.isChecked()){
+            if (RadioButtonSoustraction.isChecked()) {
                 nao.setMoins(true);
             }
 
-            if(RadioButtonDivision.isChecked()){
+            if (RadioButtonDivision.isChecked()) {
                 nao.setDivise(true);
             }
 
-            if(RadioButtonMultiplication.isChecked()){
+            if (RadioButtonMultiplication.isChecked()) {
                 nao.setMultiple(true);
             }
 
@@ -92,7 +95,6 @@ public class LancerExerciceActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NAOUpdatedEvent naoUpdatedEvent) {
         Intent intent = new Intent(LancerExerciceActivity.this, ExerciceActivity.class);
-        intent.putExtra("toto", "toti");
         startActivity(intent);
 
     }
@@ -100,11 +102,6 @@ public class LancerExerciceActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent messageEvent) {
         Toast.makeText(getApplicationContext(), messageEvent.getMessage(), Toast.LENGTH_LONG).show();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(NAOSavedEvent naoSavedEvent) {
-        nao = naoSavedEvent.getNao();
     }
 }
 

@@ -7,7 +7,7 @@
     tools:context="com.example.kinma.test_call_ws.activity.MainActivity">
 
     <Button
-        android:id="@+id/ButtonDemarerApplication"
+        android:id="@+id/ButtonDemarrerApplication"
         android:layout_width="215dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
@@ -15,7 +15,6 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/shape_button"
         android:elevation="0dp"
-        android:onClick="DemarerApplication"
         android:text="Démarer l'application"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"

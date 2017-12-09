@@ -60,7 +60,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@drawable/shape_button"
-        android:onClick="TesterRobotNAO"
         android:text="Tester la connexion"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -71,14 +70,13 @@
         app:layout_constraintTop_toBottomOf="@+id/TextViewIPRobot" />
 
     <Button
-        android:id="@+id/ButtonSynchroniserRobot"
+        android:id="@+id/ButtonSynchronisationRobot"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/shape_button"
-        android:onClick="SynchroniserRobotNAO"
         android:text="Synchroniser le robot"
         android:textAlignment="center"
         android:textAllCaps="false"

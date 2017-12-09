@@ -21,14 +21,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/ButtonCreerEleve"
+        android:id="@+id/ButtonCreerExercice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/shape_button"
-        android:onClick="CreerExercice"
         android:text="Créer exercice"
         android:textAllCaps="false"
         android:textColor="@color/textColor"

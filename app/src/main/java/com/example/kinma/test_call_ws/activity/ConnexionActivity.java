@@ -24,6 +24,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ConnexionActivity extends AppCompatActivity {
     @BindView(R.id.EditTextUtilisateur)
@@ -42,13 +43,13 @@ public class ConnexionActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         this.profManager = new ProfManager();
     }
-
-    public void CreeProfil(View view) {
+    @OnClick(R.id.ButtonCreeProfil)
+    public void CreeProfil() {
         Intent intent = new Intent(ConnexionActivity.this, RegisterProfActivity.class);
         startActivity(intent);
     }
-
-    public void Connexion(View view) {
+    @OnClick(R.id.ButtonConnexion)
+    public void Connexion() {
         MailUtilisateur = EditTextUtilisateur.getText().toString();
         PasswordUtilisateur = EditTextPasswordProf.getText().toString();
         if (MailUtilisateur.equals("") && PasswordUtilisateur.equals("")) {

@@ -27,7 +27,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/shape_button"
-        android:onClick="SynchroniserRobotNAO1"
         android:text="Synchroniser un robot NAO"
         android:textAllCaps="false"
         android:textColor="@color/textColor"

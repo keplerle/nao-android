@@ -46,8 +46,8 @@ public class RegisterEleveActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         this.eleveManager = new EleveManager();
     }
-    @OnClick(R.id.ButtonCreeEleve)
-    public void CreerEleve(View view){
+    @OnClick(R.id.ButtonCreationEleve)
+    public void CreerEleve(){
         String nomEleve = EditTextNomEleve.getText().toString();
         String prenomEleve = EditTextPrenomEleve.getText().toString();
         String classeEleve = EditTextClasseEleve.getText().toString();

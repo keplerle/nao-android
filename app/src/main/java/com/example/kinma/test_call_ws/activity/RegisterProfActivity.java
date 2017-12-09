@@ -24,6 +24,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class RegisterProfActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class RegisterProfActivity extends AppCompatActivity {
     EditText EditTextVerifPassword;
     ProfManager profManager;
     Prof prof;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,8 @@ public class RegisterProfActivity extends AppCompatActivity {
         this.profManager = new ProfManager();
     }
 
-    public void Cree(View view) {
+    @OnClick(R.id.ButtonCreationProf)
+    public void Cree() {
         String nom = EditTextNom.getText().toString();
         String prenom = EditTextPrenom.getText().toString();
         String mail = EditTextMail.getText().toString();
@@ -95,7 +98,7 @@ public class RegisterProfActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ProfSavedEvent profSavedEvent) {
-        PublicContext.currentProf=prof;
+        PublicContext.currentProf = prof;
         Intent intent = new Intent(RegisterProfActivity.this, MenuActivity.class);
         startActivity(intent);
 
