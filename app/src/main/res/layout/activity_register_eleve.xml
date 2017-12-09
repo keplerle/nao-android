@@ -97,7 +97,7 @@
         android:layout_marginStart="35dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/ButtonCreeEleve"
-        app:layout_constraintStart_toStartOf="@+id/ButtonCreeEleve" />
+        app:layout_constraintBottom_toTopOf="@+id/ButtonCreationEleve"
+        app:layout_constraintStart_toStartOf="@+id/ButtonCreationEleve" />
 
 </android.support.constraint.ConstraintLayout>

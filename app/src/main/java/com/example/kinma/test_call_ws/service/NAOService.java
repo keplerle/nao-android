@@ -2,6 +2,8 @@ package com.example.kinma.test_call_ws.service;
 
 import com.example.kinma.test_call_ws.model.NAO;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -16,11 +18,8 @@ public interface NAOService {
     @GET("rest/nao/ip")
     Call<NAO> getNAOip(@Query("ip") String ip);
 
-    @GET("rest/nao/prof")
-    Call<NAO> getNAOprof(@Query("mailprof") String mail);
-
-    @GET("rest/nao/aprof")
-    Call<NAO> getAllNAOprof(@Query("mailprof") String mail);
+    @GET("rest/nao/mailprof")
+    Call<List<NAO>> getAllNAOprof(@Query("mailprof") String mail);
 
     @POST("rest/nao")
     Call<NAO> saveNAO(@Body NAO nao);

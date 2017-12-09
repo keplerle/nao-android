@@ -2,6 +2,8 @@ package com.example.kinma.test_call_ws.service;
 
 import com.example.kinma.test_call_ws.model.Eleve;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -17,7 +19,7 @@ public interface EleveService {
     Call<Eleve> getEleve(@Query("prof") String prof);
 
     @GET("rest/eleve/prof")
-    Call<Eleve> getAllEleve(@Query("prof") String prof);
+    Call<List<Eleve>> getAllEleve(@Query("prof") String prof);
 
     @POST("rest/eleve")
     Call<Eleve> saveEleve(@Body Eleve eleve);

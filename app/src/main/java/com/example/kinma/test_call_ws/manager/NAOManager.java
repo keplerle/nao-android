@@ -1,10 +1,12 @@
 package com.example.kinma.test_call_ws.manager;
 
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
+import com.example.kinma.test_call_ws.activity.Events.NAOListEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
 import com.example.kinma.test_call_ws.model.NAO;
 import com.example.kinma.test_call_ws.service.NAOService;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,7 +31,7 @@ public class NAOManager {
         Retrofit retrofit=new Retrofit.Builder()
                // .baseUrl("http://api.example.com")
                // .baseUrl("http://localhost:8080")
-                .baseUrl("http://172.20.10.2:8080/")
+                .baseUrl("http://192.168.0.34:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
 
                 .build();
@@ -53,17 +55,17 @@ public class NAOManager {
         });
     }
 
-    public void getNAOByProf(String mailprof) {
-        naoService.getNAOprof(mailprof).enqueue(new Callback<NAO>() {
+
+    public void getAllNAOByProf(String mailprof) {
+        naoService.getAllNAOprof(mailprof).enqueue(new Callback<List<NAO>>() {
             @Override
-            public void onResponse(Call<NAO> call, Response<NAO> response) {
-                //poste un evenement avec EventBus. L'evenement contient NAO
-                NAO nao = response.body();
-                EventBus.getDefault().post(nao);
+            public void onResponse(Call<List<NAO>> call, Response<List<NAO>> response) {
+                List<NAO> naos = response.body();
+                EventBus.getDefault().post(new NAOListEvent(naos));
             }
 
             @Override
-            public void onFailure(Call<NAO> call, Throwable t) {
+            public void onFailure(Call<List<NAO>> call, Throwable t) {
                 t.printStackTrace();
                 EventBus.getDefault().post(new MessageEvent("Impossible de récupérer le robot"));
             }

@@ -1,5 +1,6 @@
 package com.example.kinma.test_call_ws.manager;
 
+import com.example.kinma.test_call_ws.activity.Events.EleveListEvent;
 import com.example.kinma.test_call_ws.activity.Events.EleveSavedEvent;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.model.Eleve;
@@ -27,7 +28,7 @@ public class EleveManager {
         Retrofit retrofit = new Retrofit.Builder()
                 // .baseUrl("http://api.example.com")
                 // .baseUrl("http://localhost:8080")
-                .baseUrl("http://172.20.10.2:8080/")
+                .baseUrl("http://192.168.0.34:8080/")
                 //.baseUrl("http://192.168.0.34:8080/")
                 //.baseUrl("http://192.168.215.19:8080")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -52,14 +53,14 @@ public class EleveManager {
             }
         });
     }
-/*
+
     public void getAllEleveByProf(String prof) {
         eleveService.getAllEleve(prof).enqueue(new Callback<List<Eleve>>() {
             @Override
             public void onResponse(Call<List<Eleve>> call, Response<List<Eleve>> response) {
                 //poste un evenement avec EventBus. L'evenement contient Eleve
                 List<Eleve> eleves = response.body();
-                EventBus.getDefault().post(eleve);
+                EventBus.getDefault().post(new EleveListEvent(eleves));
             }
 
             @Override
@@ -68,7 +69,7 @@ public class EleveManager {
                 EventBus.getDefault().post(new MessageEvent("Impossible de récupérer l'élève"));
             }
         });
-    }*/
+    }
 
     public void saveEleve(Eleve eleve) {
         eleveService.saveEleve(eleve).enqueue(new Callback<Eleve>() {

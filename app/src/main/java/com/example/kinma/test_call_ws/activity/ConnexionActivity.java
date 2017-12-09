@@ -7,7 +7,7 @@ import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.AlignmentSpan;
-import android.view.View;
+
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,7 +15,6 @@ import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.activity.Events.ConnexionEvent;
 import com.example.kinma.test_call_ws.manager.ProfManager;
-import com.example.kinma.test_call_ws.model.Prof;
 
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,6 +34,7 @@ public class ConnexionActivity extends AppCompatActivity {
     String MailUtilisateur;
     String PasswordUtilisateur;
     String text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +42,15 @@ public class ConnexionActivity extends AppCompatActivity {
         setTitle(R.string.ConnexionActivity_label);
         ButterKnife.bind(this);
         this.profManager = new ProfManager();
+        PublicContext.currentProf = null;
     }
+
     @OnClick(R.id.ButtonCreeProfil)
     public void CreeProfil() {
         Intent intent = new Intent(ConnexionActivity.this, RegisterProfActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.ButtonConnexion)
     public void Connexion() {
         MailUtilisateur = EditTextUtilisateur.getText().toString();
@@ -93,12 +96,11 @@ public class ConnexionActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ConnexionEvent connexionEvent) {
-        if (connexionEvent.getProf()!=null&&PasswordUtilisateur.equals(connexionEvent.getProf().getPassword())) {
-            PublicContext.currentProf=connexionEvent.getProf();
+        if (connexionEvent.getProf() != null && PasswordUtilisateur.equals(connexionEvent.getProf().getPassword())) {
+            PublicContext.currentProf = connexionEvent.getProf();
             Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
             startActivity(intent);
-        }
-        else{
+        } else {
             text = "Echec de la connexion";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),

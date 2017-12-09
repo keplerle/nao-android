@@ -7,7 +7,6 @@ import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.AlignmentSpan;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
