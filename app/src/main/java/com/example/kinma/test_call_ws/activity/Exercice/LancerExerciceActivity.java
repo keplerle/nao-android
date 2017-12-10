@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
@@ -36,7 +37,7 @@ public class LancerExerciceActivity extends AppCompatActivity {
     @BindView(R.id.RadioButtonAddition)
     RadioButton RadioButtonAddition;
     NAOManager naoManager;
-    NAO nao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,24 +60,24 @@ public class LancerExerciceActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else {
             if (RadioButtonAddition.isChecked()) {
-                nao.setPlus(true);
+                PublicContext.currentNao.setPlus(true);
             }
 
             if (RadioButtonSoustraction.isChecked()) {
-                nao.setMoins(true);
+                PublicContext.currentNao.setMoins(true);
             }
 
             if (RadioButtonDivision.isChecked()) {
-                nao.setDivise(true);
+                PublicContext.currentNao.setDivise(true);
             }
 
             if (RadioButtonMultiplication.isChecked()) {
-                nao.setMultiple(true);
+                PublicContext.currentNao.setMultiple(true);
             }
 
-            nao.setOperande(true);
-            nao.setOperateur(true);
-            this.naoManager.updateNAO(nao);
+            PublicContext.currentNao.setOperande(true);
+            PublicContext.currentNao.setOperateur(true);
+            this.naoManager.updateNAO(PublicContext.currentNao);
         }
     }
 

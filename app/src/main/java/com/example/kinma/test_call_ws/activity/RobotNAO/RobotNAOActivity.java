@@ -28,9 +28,8 @@ import butterknife.OnClick;
 
 public class RobotNAOActivity extends AppCompatActivity {
     @BindView(R.id.ListViewRobotSynchronise)
-    ListView ListViewRobotSynchronise;
+    ListView listViewRobotSynchronise;
     NAOManager naoManager;
-    Prof prof;
     List<NAO> robotNAO;
 
     @Override
@@ -41,13 +40,8 @@ public class RobotNAOActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         List<NAO> robotNAO = new ArrayList<NAO>();
         this.naoManager = new NAOManager();
-        afficherListeRobotNAO();
-
-
-    }
-
-    private void afficherListeRobotNAO() {
         this.naoManager.getAllNAOByProf(PublicContext.currentProf.getMail());
+
     }
 
     @OnClick(R.id.ButtonSynchroniserRobot)
@@ -71,7 +65,7 @@ public class RobotNAOActivity extends AppCompatActivity {
     public void onMessageEvent(NAOListEvent naoListEvent) {
             robotNAO = naoListEvent.getNaos();
             RobotNAOAdapter robotNAOAdapter = new RobotNAOAdapter(RobotNAOActivity.this, robotNAO);
-            ListViewRobotSynchronise.setAdapter(robotNAOAdapter);
+            listViewRobotSynchronise.setAdapter(robotNAOAdapter);
 
     }
 

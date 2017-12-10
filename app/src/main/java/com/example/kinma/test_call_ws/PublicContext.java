@@ -1,5 +1,7 @@
 package com.example.kinma.test_call_ws;
 
+import com.example.kinma.test_call_ws.model.Eleve;
+import com.example.kinma.test_call_ws.model.NAO;
 import com.example.kinma.test_call_ws.model.Prof;
 
 /**
@@ -8,4 +10,6 @@ import com.example.kinma.test_call_ws.model.Prof;
 
 public class PublicContext {
     public static Prof currentProf;
+    public static Eleve currentEleve;
+    public static NAO currentNao;
 }
