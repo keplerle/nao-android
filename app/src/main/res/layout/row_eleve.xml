@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/fausse_reponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bonne_reponse"
+        android:layout_alignBottom="@+id/bonne_reponse"
+        android:layout_alignEnd="@+id/label_fausse_reponse"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="nbdr de mauvaise reponse" />
+
+    <TextView
+        android:id="@+id/label_fausse_reponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/label_bonne_reponse"
+        android:layout_alignBottom="@+id/label_bonne_reponse"
+        android:layout_alignEnd="@+id/classe_eleve"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="Mauvaise reponse" />
+
+    <TextView
+        android:id="@+id/nom_eleve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="nom de l'eleve" />
+
+    <TextView
+        android:id="@+id/bonne_reponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/label_bonne_reponse"
+        android:layout_marginTop="19dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="nbr de bonne reponse" />
+
+    <TextView
+        android:id="@+id/label_bonne_reponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/nom_eleve"
+        android:layout_below="@+id/nom_eleve"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="Bonne reponse" />
+
+    <TextView
+        android:id="@+id/prenom_eleve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/nom_eleve"
+        android:textColor="@android:color/black"
+        tools:text="prenom de l'eleve" />
+
+    <TextView
+        android:id="@+id/classe_eleve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/prenom_eleve"
+        android:textColor="@android:color/black"
+        tools:text="classe de l'eleve" />
+
+</RelativeLayout>

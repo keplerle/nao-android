@@ -13,7 +13,6 @@ import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.RobotNAOAdapter;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOListEvent;
-import com.example.kinma.test_call_ws.activity.RobotNAO.RobotNAOActivity;
 import com.example.kinma.test_call_ws.manager.NAOManager;
 import com.example.kinma.test_call_ws.model.NAO;
 
@@ -25,10 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ExerciceActivity extends AppCompatActivity {
-    ListView listViewExerciceSynchronise;
+    ListView listViewExercice;
     NAOManager naoManager;
     List<NAO> exerciceNAO;
 
@@ -42,7 +40,7 @@ public class ExerciceActivity extends AppCompatActivity {
         this.naoManager.getAllNAOByProf(PublicContext.currentProf.getMail());
         setTitle(R.string.ExerciceActivity_label);
         PublicContext.currentNao = null;
-        listViewExerciceSynchronise.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewExercice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PublicContext.currentNao = (NAO) parent.getItemAtPosition(position);
@@ -68,7 +66,7 @@ public class ExerciceActivity extends AppCompatActivity {
     public void onMessageEvent(NAOListEvent naoListEvent) {
         exerciceNAO = naoListEvent.getNaos();
         RobotNAOAdapter robotNAOAdapter = new RobotNAOAdapter(ExerciceActivity.this, exerciceNAO);
-        listViewExerciceSynchronise.setAdapter(robotNAOAdapter);
+        listViewExercice.setAdapter(robotNAOAdapter);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

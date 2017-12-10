@@ -28,7 +28,7 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
         RobotNAOViewHolder viewHolder = (RobotNAOViewHolder) convertView.getTag();
         if(viewHolder == null){
             viewHolder = new RobotNAOViewHolder();
-            viewHolder.nom_robotnao = (TextView) convertView.findViewById(R.id.nom_robotnao);
+            viewHolder.nom_robotnao = (TextView) convertView.findViewById(R.id.nom_eleve);
             viewHolder.ip_robotnao = (TextView) convertView.findViewById(R.id.ip_robotnao);
             viewHolder.etat_robotnao = (ImageView) convertView.findViewById(R.id.etat_robotnao);
             convertView.setTag(viewHolder);
