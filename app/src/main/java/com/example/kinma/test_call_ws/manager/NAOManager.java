@@ -3,6 +3,7 @@ package com.example.kinma.test_call_ws.manager;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOListEvent;
 import com.example.kinma.test_call_ws.activity.Events.NAOSavedEvent;
+import com.example.kinma.test_call_ws.activity.Events.NAOUpdatedEvent;
 import com.example.kinma.test_call_ws.model.NAO;
 import com.example.kinma.test_call_ws.service.NAOService;
 
@@ -29,9 +30,7 @@ public class NAOManager {
     }
     public NAOManager(){
         Retrofit retrofit=new Retrofit.Builder()
-               // .baseUrl("http://api.example.com")
-               // .baseUrl("http://localhost:8080")
-                .baseUrl("http://192.168.0.34:8080/")
+                .baseUrl("http://172.20.10.2:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
 
                 .build();
@@ -111,13 +110,13 @@ public class NAOManager {
             @Override
             public void onResponse(Call<NAO> call, Response<NAO> response) {
                 NAO nao = response.body();
-                EventBus.getDefault().post(new NAOSavedEvent(nao));
+                EventBus.getDefault().post(new NAOUpdatedEvent(nao));
             }
 
             @Override
             public void onFailure(Call<NAO> call, Throwable t)   {
                 t.printStackTrace();
-                EventBus.getDefault().post(new MessageEvent("Impossible de synchroniser le robot"));
+                EventBus.getDefault().post(new MessageEvent("Impossible de configurer l'exercice"));
             }
         });
     }

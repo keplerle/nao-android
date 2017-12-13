@@ -23,9 +23,11 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ExerciceActivity extends AppCompatActivity {
+    @BindView(R.id.listViewExercice)
     ListView listViewExercice;
     NAOManager naoManager;
     List<NAO> exerciceNAO;
@@ -40,14 +42,7 @@ public class ExerciceActivity extends AppCompatActivity {
         this.naoManager.getAllNAOByProf(PublicContext.currentProf.getMail());
         setTitle(R.string.ExerciceActivity_label);
         PublicContext.currentNao = null;
-        listViewExercice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                PublicContext.currentNao = (NAO) parent.getItemAtPosition(position);
-                Intent intent = new Intent(ExerciceActivity.this, LancerExerciceActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     @Override
@@ -67,6 +62,14 @@ public class ExerciceActivity extends AppCompatActivity {
         exerciceNAO = naoListEvent.getNaos();
         RobotNAOAdapter robotNAOAdapter = new RobotNAOAdapter(ExerciceActivity.this, exerciceNAO);
         listViewExercice.setAdapter(robotNAOAdapter);
+        listViewExercice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PublicContext.currentNao = (NAO) parent.getItemAtPosition(position);
+                Intent intent = new Intent(ExerciceActivity.this, LancerExerciceActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

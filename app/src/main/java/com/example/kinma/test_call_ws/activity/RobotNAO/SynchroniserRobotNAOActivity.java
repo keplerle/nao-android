@@ -31,8 +31,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SynchroniserRobotNAOActivity extends AppCompatActivity {
-    @BindView(R.id.EtatConnexionRobotNAO)
-    ImageView EtatConnexionRobotNAO;
     @BindView(R.id.EditTextIPRobot)
     EditText EditTextIPRobot;
     @BindView(R.id.EditTextNomRobot)
@@ -49,7 +47,7 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         this.naoManager = new NAOManager();
     }
-
+/*
     @OnClick(R.id.ButtonTesterRobot)
     public void TesterRobotNAO() {
         IPRobotNAO = EditTextIPRobot.getText().toString();
@@ -65,7 +63,7 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
             naoManager.getNAOByIp(IPRobotNAO);
 
         }
-    }
+    }*/
 
     @OnClick(R.id.ButtonSynchronisationRobot)
     public void SynchroniserRobotNAO() {

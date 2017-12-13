@@ -18,10 +18,10 @@ public interface ProfService {
     @POST("rest/prof")
     Call<Prof> saveProf(@Body Prof prof);
 
-    @DELETE("/prof")
+    @DELETE("rest/prof")
     Call<Boolean> deleteProf(@Query("id") long id);
 
-    @PUT("/prof")
+    @PUT("rest/prof")
     Call<Boolean> updateProf(@Body Prof prof);
 
 }

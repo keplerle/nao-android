@@ -42,8 +42,8 @@ public class EleveAdapter extends ArrayAdapter<Eleve> {
         viewHolder.nom_eleve.setText(eleve.getNom());
         viewHolder.prenom_eleve.setText(eleve.getPrenom());
         viewHolder.classe_eleve.setText(eleve.getClasse());
-        viewHolder.bonne_reponse.setText(eleve.getBonne_reponse());
-        viewHolder.fausse_reponse.setText(eleve.getFausse_reponse());
+        viewHolder.bonne_reponse.setText(Integer.toString(eleve.getBonne_reponse()));
+        viewHolder.fausse_reponse.setText(Integer.toString(eleve.getFausse_reponse()));
         return convertView;
     }
 

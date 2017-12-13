@@ -3,14 +3,12 @@ package com.example.kinma.test_call_ws.activity.Eleve;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.kinma.test_call_ws.EleveAdapter;
 import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
-import com.example.kinma.test_call_ws.RobotNAOAdapter;
 import com.example.kinma.test_call_ws.activity.Events.EleveListEvent;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
 import com.example.kinma.test_call_ws.manager.EleveManager;
@@ -22,15 +20,18 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
 public class EleveActivity extends AppCompatActivity {
     EleveManager eleveManager;
+    @BindView(R.id.ListViewEleve)
     ListView listViewEleve;
     List<Eleve> eleves;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleve);

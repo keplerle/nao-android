@@ -8,4 +8,8 @@ public class NAOUpdatedEvent {
     public NAOUpdatedEvent(NAO nao){
         this.nao = nao;
     }
+
+    public NAO getNao() {
+        return nao;
+    }
 }

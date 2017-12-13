@@ -19,9 +19,19 @@ public class NAO {
     private boolean multiple;
     private boolean divise;
 
+    //private int signe_possible;
+
     public NAO() {
         super();
     }
+/*
+    public int getSigne_possible() {
+        return signe_possible;
+    }
+
+    public void setSigne_possible(int signe_possible) {
+        this.signe_possible = signe_possible;
+    }*/
 
     public void setMailprof(String mailprof) {
         this.mailprof = mailprof;
