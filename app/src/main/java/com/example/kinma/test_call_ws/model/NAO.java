@@ -14,24 +14,19 @@ public class NAO {
     private int batterie;
     private boolean operande;
     private boolean operateur;
-    private boolean plus;
-    private boolean moins;
-    private boolean multiple;
-    private boolean divise;
-
-    //private int signe_possible;
+    private int signe_possible;
 
     public NAO() {
         super();
     }
-/*
+
     public int getSigne_possible() {
         return signe_possible;
     }
 
     public void setSigne_possible(int signe_possible) {
         this.signe_possible = signe_possible;
-    }*/
+    }
 
     public void setMailprof(String mailprof) {
         this.mailprof = mailprof;
@@ -76,37 +71,6 @@ public class NAO {
         this.batterie = batterie;
     }
 
-    public boolean isPlus() {
-        return plus;
-    }
-
-    public void setPlus(boolean plus) {
-        this.plus = plus;
-    }
-
-    public boolean isMoins() {
-        return moins;
-    }
-
-    public void setMoins(boolean moins) {
-        this.moins = moins;
-    }
-
-    public boolean isMultiple() {
-        return multiple;
-    }
-
-    public void setMultiple(boolean multiple) {
-        this.multiple = multiple;
-    }
-
-    public boolean isDivise() {
-        return divise;
-    }
-
-    public void setDivise(boolean divise) {
-        this.divise = divise;
-    }
 
     public String getNom() {
         return nom;

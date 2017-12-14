@@ -51,110 +51,86 @@ public class LancerExerciceActivity extends AppCompatActivity {
         setTitle(R.string.LancerExerciceActivity_label);
         ButterKnife.bind(this);
         this.naoManager = new NAOManager();
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
         switchOperande.setChecked(PublicContext.currentNao.isOperateur());
         switchNiveau.setChecked(PublicContext.currentNao.isOperande());
-        /*
-        if(PublicContext.currentNao.getSigne_possible==1){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
+
+        if (PublicContext.currentNao.getSigne_possible() == 1) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(false);
+            RadioButtonMultiplication.setChecked(false);
+            RadioButtonDivision.setChecked(false);
+        } else if (PublicContext.currentNao.getSigne_possible() == 2) {
+            RadioButtonAddition.setChecked(false);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(false);
+            RadioButtonDivision.setChecked(false);
+        } else if (PublicContext.currentNao.getSigne_possible() == 3) {
+            RadioButtonAddition.setChecked(false);
+            RadioButtonSoustraction.setChecked(false);
+            RadioButtonMultiplication.setChecked(false);
+            RadioButtonDivision.setChecked(true);
+        } else if (PublicContext.currentNao.getSigne_possible() == 4) {
+            RadioButtonAddition.setChecked(false);
+            RadioButtonSoustraction.setChecked(false);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(false);
+        } else if (PublicContext.currentNao.getSigne_possible() == 5) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(false);
+            RadioButtonDivision.setChecked(false);
+        } else if (PublicContext.currentNao.getSigne_possible() == 6) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(false);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(false);
+        } else if (PublicContext.currentNao.getSigne_possible() == 7) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(false);
+            RadioButtonMultiplication.setChecked(false);
+            RadioButtonDivision.setChecked(true);
+        } else if (PublicContext.currentNao.getSigne_possible() == 8) {
+            RadioButtonAddition.setChecked(false);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(false);
+        } else if (PublicContext.currentNao.getSigne_possible() == 9) {
+            RadioButtonAddition.setChecked(false);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(false);
+            RadioButtonDivision.setChecked(true);
+        } else if (PublicContext.currentNao.getSigne_possible() == 10) {
+            RadioButtonAddition.setChecked(false);
+            RadioButtonSoustraction.setChecked(false);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(true);
+        } else if (PublicContext.currentNao.getSigne_possible() == 11) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(false);
+        } else if (PublicContext.currentNao.getSigne_possible() == 12) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(false);
+            RadioButtonDivision.setChecked(true);
+        } else if (PublicContext.currentNao.getSigne_possible() == 13) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(false);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(true);
+        } else if (PublicContext.currentNao.getSigne_possible() == 14) {
+            RadioButtonAddition.setChecked(false);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(true);
+        } else if (PublicContext.currentNao.getSigne_possible() == 15) {
+            RadioButtonAddition.setChecked(true);
+            RadioButtonSoustraction.setChecked(true);
+            RadioButtonMultiplication.setChecked(true);
+            RadioButtonDivision.setChecked(true);
         }
-        else if(PublicContext.currentNao.getSigne_possible==2){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==3){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==4){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==5){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==6){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==7){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==8){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==9){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==10){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==11){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==12){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==13){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==14){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==15){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        else if(PublicContext.currentNao.getSigne_possible==16){
-        RadioButtonAddition.setChecked(PublicContext.currentNao.isPlus());
-        RadioButtonSoustraction.setChecked(PublicContext.currentNao.isMoins());
-        RadioButtonMultiplication.setChecked(PublicContext.currentNao.isMultiple());
-        RadioButtonDivision.setChecked(PublicContext.currentNao.isDivise());
-        }
-        */
+
     }
 
     @OnClick(R.id.ButtonCreationExercice)
@@ -168,90 +144,64 @@ public class LancerExerciceActivity extends AppCompatActivity {
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else {
-            if (RadioButtonAddition.isChecked()) {
-                PublicContext.currentNao.setPlus(true);
-            } else {
-                PublicContext.currentNao.setPlus(false);
-            }
-
-            if (RadioButtonSoustraction.isChecked()) {
-                PublicContext.currentNao.setMoins(true);
-            } else {
-                PublicContext.currentNao.setMoins(false);
-            }
-
-            if (RadioButtonDivision.isChecked()) {
-                PublicContext.currentNao.setDivise(true);
-            } else {
-                PublicContext.currentNao.setDivise(false);
-            }
-
-            if (RadioButtonMultiplication.isChecked()) {
-                PublicContext.currentNao.setMultiple(true);
-            } else {
-                PublicContext.currentNao.setMultiple(false);
-            }
-            if(switchNiveau.isChecked()){
+            if (switchNiveau.isChecked()) {
                 PublicContext.currentNao.setOperande(true);
-            }else{
+            } else {
                 PublicContext.currentNao.setOperande(false);
             }
-            if(switchOperande.isChecked()){
+            if (switchOperande.isChecked()) {
                 PublicContext.currentNao.setOperateur(true);
-            }else{
+            } else {
                 PublicContext.currentNao.setOperateur(false);
             }
-/*
 
-            if(RadioButtonAddition.isChecked()&&){
+
+            if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==false&&RadioButtonMultiplication.isChecked()==false&&RadioButtonDivision.isChecked()==false){
              PublicContext.currentNao.setSigne_possible(1);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==false&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==false&&RadioButtonDivision.isChecked()==false){
                 PublicContext.currentNao.setSigne_possible(2);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==false&&RadioButtonSoustraction.isChecked()==false&&RadioButtonMultiplication.isChecked()==false&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(3);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==false&&RadioButtonSoustraction.isChecked()==false&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==false){
                 PublicContext.currentNao.setSigne_possible(4);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==false&&RadioButtonDivision.isChecked()==false){
                 PublicContext.currentNao.setSigne_possible(5);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==false&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==false){
                 PublicContext.currentNao.setSigne_possible(6);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==false&&RadioButtonMultiplication.isChecked()==false&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(7);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==false&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==false){
                 PublicContext.currentNao.setSigne_possible(8);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==false&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==false&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(9);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==false&&RadioButtonSoustraction.isChecked()==false&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(10);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==false){
                 PublicContext.currentNao.setSigne_possible(11);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==false&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(12);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==false&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(13);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==false&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(14);
             }
-            else if(){
+            else if(RadioButtonAddition.isChecked()==true&&RadioButtonSoustraction.isChecked()==true&&RadioButtonMultiplication.isChecked()==true&&RadioButtonDivision.isChecked()==true){
                 PublicContext.currentNao.setSigne_possible(15);
             }
-            else if(){
-                PublicContext.currentNao.setSigne_possible(16);
-            }
-      */
+
             this.naoManager.updateNAO(PublicContext.currentNao);
         }
     }
