@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kinma.test_call_ws">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,22 +12,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Eleve.EleveActivity" />
-        <activity android:name=".activity.Eleve.RegisterEleveActivity" />
-        <activity android:name=".activity.Exercice.ExerciceActivity" />
+        <activity
+            android:name=".activity.Eleve.EleveActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MenuActivity"/>
+        <activity
+            android:name=".activity.Eleve.RegisterEleveActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.Eleve.EleveActivity"/>
+        <activity
+            android:name=".activity.Exercice.ExerciceActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MenuActivity"/>
         <activity android:name=".activity.Exercice.LancerExerciceActivity" />
-        <activity android:name=".activity.RobotNAO.RobotNAOActivity" />
-        <activity android:name=".activity.RobotNAO.SynchroniserRobotNAOActivity" />
-        <activity android:name=".activity.ConnexionActivity" />
-        <activity android:name=".activity.MenuActivity" />
-        <activity android:name=".activity.RegisterProfActivity"></activity>
+        <activity
+            android:name=".activity.RobotNAO.RobotNAOActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MenuActivity"/>
+        <activity
+            android:name=".activity.RobotNAO.SynchroniserRobotNAOActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.RobotNAO.RobotNAOActivity"/>
+        <activity
+            android:name=".activity.ConnexionActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.MenuActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.ConnexionActivity"/>
+        <activity
+            android:name=".activity.RegisterProfActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.ConnexionActivity"></activity>
     </application>
 
 </manifest>

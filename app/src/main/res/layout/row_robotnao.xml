@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,28 +11,61 @@
         android:id="@+id/etat_robotnao"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        tools:background="#AAA"
-        />
+        android:layout_alignStart="@+id/label_etat"
+        android:layout_below="@+id/ip_robotnao"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ip_robotnao"
+        app:layout_constraintTop_toBottomOf="@+id/label_etat"
+        tools:background="#AAA" />
 
     <TextView
         android:id="@+id/nom_eleve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/etat_robotnao"
-        android:layout_alignTop="@+id/etat_robotnao"
+        android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="nom robot NAO" />
+
+    <TextView
+        android:id="@+id/label_etat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nom_eleve"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Etat du robot :" />
 
     <TextView
         android:id="@+id/ip_robotnao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
         android:layout_alignLeft="@+id/nom_eleve"
         android:layout_below="@+id/nom_eleve"
-        tools:text="ip du robot nao"
-        />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nom_eleve"
+        tools:text="ip du robot nao" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -56,7 +56,11 @@ public class ExerciceActivity extends AppCompatActivity {
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
-
+    @Override
+    public void onBackPressed(){
+        Intent intent = getParentActivityIntent();
+        startActivity(intent);
+    }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NAOListEvent naoListEvent) {
         exerciceNAO = naoListEvent.getNaos();

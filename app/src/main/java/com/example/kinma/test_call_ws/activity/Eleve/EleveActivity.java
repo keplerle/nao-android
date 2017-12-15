@@ -38,7 +38,7 @@ public class EleveActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         this.eleveManager=new EleveManager();
         this.eleveManager.getAllEleveByProf(PublicContext.currentProf.getMail());
-
+        setTitle(R.string.ListeEleve);
     }
 @OnClick(R.id.ButtonCreerEleve)
     public void CreeEleve() {
@@ -50,7 +50,11 @@ public class EleveActivity extends AppCompatActivity {
         super.onStart();
         EventBus.getDefault().register(this);
     }
-
+    @Override
+    public void onBackPressed(){
+        Intent intent = getParentActivityIntent();
+        startActivity(intent);
+    }
     @Override
     public void onStop() {
         super.onStop();

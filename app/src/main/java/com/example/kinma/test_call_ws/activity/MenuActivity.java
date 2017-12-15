@@ -33,7 +33,11 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(MenuActivity.this, ExerciceActivity.class);
         startActivity(intent);
     }
-
+    @Override
+    public void onBackPressed(){
+        Intent intent = getParentActivityIntent();
+        startActivity(intent);
+    }
     @OnClick(R.id.ButtonEleve)
     public void Eleve() {
         Intent intent = new Intent(MenuActivity.this, EleveActivity.class);

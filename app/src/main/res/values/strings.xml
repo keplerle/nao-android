@@ -10,11 +10,12 @@
     <string name="RegisterEleveActivity_label">Créer un élève</string>
 
     <string name="LancerExerciceActivity_label">Lancer un Exercice</string>
-    <string name="ExerciceActivity_label">Voir les Exercices en Cours</string>
+    <string name="ExerciceActivity_label">Configurer un exercice</string>
 
 
     <string name="SynchroniserRobotNAOActivity_label">Synchroniser un Robot NAO</string>
-    <string name="RobotNAOActivity_label">Robot NAO Synchronisé</string>
+    <string name="RobotNAOActivity_label">Etat du robot</string>
+    <string name="ListeEleve">Liste des élèves</string>
 
 
 </resources>

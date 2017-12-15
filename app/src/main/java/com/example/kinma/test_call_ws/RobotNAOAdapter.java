@@ -30,6 +30,7 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
             viewHolder = new RobotNAOViewHolder();
             viewHolder.nom_robotnao = (TextView) convertView.findViewById(R.id.nom_eleve);
             viewHolder.ip_robotnao = (TextView) convertView.findViewById(R.id.ip_robotnao);
+            viewHolder.label_etat = (TextView) convertView.findViewById(R.id.label_etat);
             viewHolder.etat_robotnao = (ImageView) convertView.findViewById(R.id.etat_robotnao);
             convertView.setTag(viewHolder);
         }
@@ -38,6 +39,7 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
         NAO nao = getItem(position);
         viewHolder.nom_robotnao.setText(nao.getNom());
         viewHolder.ip_robotnao.setText(nao.getIp());
+        viewHolder.label_etat.setText("Etat du robot :");
         if(nao.getEtatRobot()==1){
             viewHolder.etat_robotnao.setImageResource(R.drawable.ok);
         }else {
@@ -50,6 +52,7 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
     private class RobotNAOViewHolder{
         public TextView nom_robotnao;
         public TextView ip_robotnao;
+        public TextView label_etat;
         public ImageView etat_robotnao;
 
     }

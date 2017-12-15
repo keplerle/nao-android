@@ -63,17 +63,19 @@
     <TextView
         android:id="@+id/TextPassword"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="17dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Password :"
+        android:text="Mot de passe :"
         android:textColor="@android:color/black"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/EditTextPasswordProf"
         app:layout_constraintEnd_toEndOf="@+id/TextMailUtilisateur"
+        app:layout_constraintHorizontal_bias="0.764"
         app:layout_constraintStart_toStartOf="@+id/TextMailUtilisateur"
-        app:layout_constraintTop_toTopOf="@+id/EditTextPasswordProf" />
+        app:layout_constraintTop_toTopOf="@+id/EditTextPasswordProf"
+        app:layout_constraintVertical_bias="0.52" />
 
     <Button
         android:id="@+id/ButtonCreeProfil"

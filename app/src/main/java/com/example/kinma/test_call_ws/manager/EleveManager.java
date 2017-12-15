@@ -26,7 +26,7 @@ public class EleveManager {
 
     public EleveManager() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://172.20.10.2:8080/")
+                .baseUrl("http://192.168.43.248:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
 
                 .build();

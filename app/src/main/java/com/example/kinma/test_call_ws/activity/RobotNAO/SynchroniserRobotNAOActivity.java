@@ -109,7 +109,11 @@ public class SynchroniserRobotNAOActivity extends AppCompatActivity {
         super.onStart();
         EventBus.getDefault().register(this);
     }
-
+    @Override
+    public void onBackPressed(){
+        Intent intent = getParentActivityIntent();
+        startActivity(intent);
+    }
     @Override
     public void onStop() {
         super.onStop();

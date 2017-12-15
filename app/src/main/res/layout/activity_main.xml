@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.kinma.test_call_ws.activity.MainActivity">
-
     <Button
         android:id="@+id/ButtonDemarrerApplication"
         android:layout_width="215dp"
@@ -41,7 +40,7 @@
     <TextView
         android:id="@+id/TextBienvenue"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="85dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
