@@ -27,7 +27,7 @@ public class ProfManager {
 
     public ProfManager() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.248:8080/")
+                .baseUrl("http://192.168.0.34:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
 
                 .build();

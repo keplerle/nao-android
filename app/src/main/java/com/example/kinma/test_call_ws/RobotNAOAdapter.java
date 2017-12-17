@@ -41,6 +41,7 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
         viewHolder.ip_robotnao.setText(nao.getIp());
         viewHolder.label_etat.setText("Etat du robot :");
         if(nao.getEtatRobot()==1){
+
             viewHolder.etat_robotnao.setImageResource(R.drawable.ok);
         }else {
             viewHolder.etat_robotnao.setImageResource(R.drawable.no);

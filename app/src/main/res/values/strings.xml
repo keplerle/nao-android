@@ -9,7 +9,7 @@
     <string name="EleveActivity_label">Gestion des élèves</string>
     <string name="RegisterEleveActivity_label">Créer un élève</string>
 
-    <string name="LancerExerciceActivity_label">Lancer un Exercice</string>
+    <string name="LancerExerciceActivity_label">Créer un Exercice</string>
     <string name="ExerciceActivity_label">Configurer un exercice</string>
 
 

@@ -8,24 +8,22 @@ public class NAO {
     private String mailprof;
     private String ip;
     private String nom;
-    private int etatRobot;
-    private int temperature_moteur;
-    private int temperature_hardware;
-    private int batterie;
+    private int etat_robot;
     private boolean operande;
     private boolean operateur;
-    private int signe_possible;
+    private int code_signe;
+
 
     public NAO() {
         super();
     }
 
-    public int getSigne_possible() {
-        return signe_possible;
+    public int getCode_signe() {
+        return code_signe;
     }
 
-    public void setSigne_possible(int signe_possible) {
-        this.signe_possible = signe_possible;
+    public void setCode_signe(int code_signe) {
+        this.code_signe = code_signe;
     }
 
     public void setMailprof(String mailprof) {
@@ -36,42 +34,6 @@ public class NAO {
         return mailprof;
     }
 
-    public NAO(int etatRobot, String nomRobot, String ipRobot) {
-        this.ip = ip;
-        this.nom = nom;
-        this.etatRobot = etatRobot;
-    }
-    public NAO(String nomRobot, String ipRobot) {
-        this.ip = ip;
-        this.nom = nom;
-    }
-
-    public int getTemperature_moteur() {
-        return temperature_moteur;
-    }
-
-
-    public void setTemperature_moteur(int temperature_moteur) {
-        this.temperature_moteur = temperature_moteur;
-    }
-
-    public int getTemperature_hardware() {
-        return temperature_hardware;
-    }
-
-    public void setTemperature_hardware(int temperature_hardware) {
-        this.temperature_hardware = temperature_hardware;
-    }
-
-    public int getBatterie() {
-        return batterie;
-    }
-
-    public void setBatterie(int batterie) {
-        this.batterie = batterie;
-    }
-
-
     public String getNom() {
         return nom;
     }
@@ -81,11 +43,11 @@ public class NAO {
     }
 
     public int getEtatRobot() {
-        return etatRobot;
+        return etat_robot;
     }
 
     public void setEtatRobot(int etatRobot) {
-        this.etatRobot = etatRobot;
+        this.etat_robot = etatRobot;
     }
 
     public String getIp() {

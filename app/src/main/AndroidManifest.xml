@@ -33,7 +33,9 @@
             android:name=".activity.Exercice.ExerciceActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".activity.MenuActivity"/>
-        <activity android:name=".activity.Exercice.LancerExerciceActivity" />
+        <activity android:name=".activity.Exercice.LancerExerciceActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.Exercice.ExerciceActivity"/>
         <activity
             android:name=".activity.RobotNAO.RobotNAOActivity"
             android:screenOrientation="portrait"
