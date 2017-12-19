@@ -30,8 +30,11 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
             viewHolder = new RobotNAOViewHolder();
             viewHolder.nom_robotnao = (TextView) convertView.findViewById(R.id.nom_eleve);
             viewHolder.ip_robotnao = (TextView) convertView.findViewById(R.id.ip_robotnao);
-            viewHolder.label_etat = (TextView) convertView.findViewById(R.id.label_etat);
-            viewHolder.etat_robotnao = (ImageView) convertView.findViewById(R.id.etat_robotnao);
+            viewHolder.label_etat_batterie = (TextView) convertView.findViewById(R.id.label_etat_batterie);
+            viewHolder.label_etat_moteur = (TextView) convertView.findViewById(R.id.label_etat_moteur);
+            viewHolder.etat_batterie = (ImageView) convertView.findViewById(R.id.etat_batterie);
+            viewHolder.etat_moteur = (ImageView) convertView.findViewById(R.id.etat_moteur);
+            viewHolder.nbr_parties = (TextView) convertView.findViewById(R.id.nbr_parties);
             convertView.setTag(viewHolder);
         }
 
@@ -39,12 +42,21 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
         NAO nao = getItem(position);
         viewHolder.nom_robotnao.setText(nao.getNom());
         viewHolder.ip_robotnao.setText(nao.getIp());
-        viewHolder.label_etat.setText("Etat du robot :");
-        if(nao.getEtatRobot()==1){
+        viewHolder.label_etat_batterie.setText("Batterie :");
+        viewHolder.label_etat_moteur.setText("Moteur :");
+        viewHolder.nbr_parties.setText(nao.getNbr_partie()+" Parties terminés");
+        if(nao.getEtat_batterie()==1){
 
-            viewHolder.etat_robotnao.setImageResource(R.drawable.ok);
+            viewHolder.etat_batterie.setImageResource(R.drawable.ok);
         }else {
-            viewHolder.etat_robotnao.setImageResource(R.drawable.no);
+            viewHolder.etat_batterie.setImageResource(R.drawable.no);
+        }
+
+        if(nao.getEtat_moteur()==1){
+
+            viewHolder.etat_moteur.setImageResource(R.drawable.ok);
+        }else {
+            viewHolder.etat_moteur.setImageResource(R.drawable.no);
         }
 
         return convertView;
@@ -53,8 +65,12 @@ public class RobotNAOAdapter extends ArrayAdapter<NAO> {
     private class RobotNAOViewHolder{
         public TextView nom_robotnao;
         public TextView ip_robotnao;
-        public TextView label_etat;
-        public ImageView etat_robotnao;
+        public TextView label_etat_batterie;
+        public TextView label_etat_moteur;
+        public TextView nbr_parties;
+        public ImageView etat_batterie;
+        public ImageView etat_moteur;
+
 
     }
 }

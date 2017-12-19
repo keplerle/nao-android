@@ -8,18 +8,32 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/etat_robotnao"
+        android:id="@+id/etat_batterie"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignStart="@+id/label_etat"
+        android:layout_alignStart="@+id/label_etat_batterie"
         android:layout_below="@+id/ip_robotnao"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ip_robotnao"
-        app:layout_constraintTop_toBottomOf="@+id/label_etat"
+        app:layout_constraintEnd_toEndOf="@+id/label_etat_batterie"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="@+id/label_etat_batterie"
+        app:layout_constraintTop_toBottomOf="@+id/label_etat_batterie"
+        tools:background="#AAA" />
+
+    <ImageView
+        android:id="@+id/etat_moteur"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/label_etat_batterie"
+        android:layout_below="@+id/ip_robotnao"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/label_etat_moteur"
+        app:layout_constraintStart_toStartOf="@+id/label_etat_moteur"
+        app:layout_constraintTop_toBottomOf="@+id/label_etat_moteur"
         tools:background="#AAA" />
 
     <TextView
@@ -38,21 +52,36 @@
         tools:text="nom robot NAO" />
 
     <TextView
-        android:id="@+id/label_etat"
+        android:id="@+id/label_etat_batterie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/nom_eleve"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Batterie :" />
+
+    <TextView
+        android:id="@+id/label_etat_moteur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="99dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nom_eleve"
+        app:layout_constraintStart_toEndOf="@+id/label_etat_batterie"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Etat du robot :" />
+        tools:text="Moteur :" />
 
     <TextView
         android:id="@+id/ip_robotnao"
@@ -61,11 +90,25 @@
         android:layout_alignLeft="@+id/nom_eleve"
         android:layout_below="@+id/nom_eleve"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nom_eleve"
         tools:text="ip du robot nao" />
+
+    <TextView
+        android:id="@+id/nbr_parties"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nom_eleve"
+        android:layout_below="@+id/nom_eleve"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ip_robotnao"
+        tools:text="X Parties" />
 
 </android.support.constraint.ConstraintLayout>

@@ -8,10 +8,12 @@ public class NAO {
     private String mailprof;
     private String ip;
     private String nom;
-    private int etat_robot;
-    private boolean operande;
-    private boolean operateur;
+    private int etat_batterie;
+    private int etat_moteur;
+    private int niveau;
+    private int operateur;
     private int code_signe;
+    private int nbr_partie;
 
 
     public NAO() {
@@ -42,14 +44,6 @@ public class NAO {
         this.nom = nom;
     }
 
-    public int getEtatRobot() {
-        return etat_robot;
-    }
-
-    public void setEtatRobot(int etatRobot) {
-        this.etat_robot = etatRobot;
-    }
-
     public String getIp() {
         return ip;
     }
@@ -58,19 +52,43 @@ public class NAO {
         this.ip = ip;
     }
 
-    public boolean isOperande() {
-        return operande;
+    public int getEtat_batterie() {
+        return etat_batterie;
     }
 
-    public void setOperande(boolean operande) {
-        this.operande = operande;
+    public void setEtat_batterie(int etat_batterie) {
+        this.etat_batterie = etat_batterie;
     }
 
-    public boolean isOperateur() {
+    public int getEtat_moteur() {
+        return etat_moteur;
+    }
+
+    public void setEtat_moteur(int etat_moteur) {
+        this.etat_moteur = etat_moteur;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
+    }
+
+    public int getOperateur() {
         return operateur;
     }
 
-    public void setOperateur(boolean operateur) {
+    public void setOperateur(int operateur) {
         this.operateur = operateur;
+    }
+
+    public int getNbr_partie() {
+        return nbr_partie;
+    }
+
+    public void setNbr_partie(int nbr_partie) {
+        this.nbr_partie = nbr_partie;
     }
 }

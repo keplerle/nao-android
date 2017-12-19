@@ -48,8 +48,13 @@ public class LancerExerciceActivity extends AppCompatActivity {
         setTitle(R.string.LancerExerciceActivity_label);
         ButterKnife.bind(this);
         this.naoManager = new NAOManager();
-        switchOperande.setChecked(PublicContext.currentNao.isOperateur());
-        switchNiveau.setChecked(PublicContext.currentNao.isOperande());
+        if(PublicContext.currentNao.getOperateur()==2){
+            switchOperande.setChecked(true);
+        }
+        if(PublicContext.currentNao.getNiveau()==2){
+            switchNiveau.setChecked(true);
+        }
+
     }
 
     @OnClick(R.id.ButtonCreationExercice)
@@ -64,14 +69,14 @@ public class LancerExerciceActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else {
             if (switchNiveau.isChecked()) {
-                PublicContext.currentNao.setOperande(true);
+                PublicContext.currentNao.setNiveau(2);
             } else {
-                PublicContext.currentNao.setOperande(false);
+                PublicContext.currentNao.setNiveau(1);
             }
             if (switchOperande.isChecked()) {
-                PublicContext.currentNao.setOperateur(true);
+                PublicContext.currentNao.setOperateur(2);
             } else {
-                PublicContext.currentNao.setOperateur(false);
+                PublicContext.currentNao.setOperateur(1);
             }
 
 
