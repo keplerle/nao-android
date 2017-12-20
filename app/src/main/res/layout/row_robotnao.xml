@@ -53,11 +53,11 @@
 
     <TextView
         android:id="@+id/label_etat_batterie"
-        android:layout_width="wrap_content"
+        android:layout_width="74dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -68,7 +68,7 @@
 
     <TextView
         android:id="@+id/label_etat_moteur"
-        android:layout_width="wrap_content"
+        android:layout_width="68dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -90,7 +90,7 @@
         android:layout_alignLeft="@+id/nom_eleve"
         android:layout_below="@+id/nom_eleve"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,8 +103,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/nom_eleve"
         android:layout_below="@+id/nom_eleve"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"

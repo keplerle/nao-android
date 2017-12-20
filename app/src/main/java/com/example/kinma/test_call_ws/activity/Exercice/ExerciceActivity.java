@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.kinma.test_call_ws.ExerciceAdapter;
 import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.RobotNAOAdapter;
@@ -64,8 +65,8 @@ public class ExerciceActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NAOListEvent naoListEvent) {
         exerciceNAO = naoListEvent.getNaos();
-        RobotNAOAdapter robotNAOAdapter = new RobotNAOAdapter(ExerciceActivity.this, exerciceNAO);
-        listViewExercice.setAdapter(robotNAOAdapter);
+        ExerciceAdapter exerciceAdapter = new ExerciceAdapter(ExerciceActivity.this, exerciceNAO);
+        listViewExercice.setAdapter(exerciceAdapter);
         listViewExercice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

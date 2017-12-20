@@ -3,6 +3,9 @@ package com.example.kinma.test_call_ws.activity.RobotNAO;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,7 +44,7 @@ public class RobotNAOActivity extends AppCompatActivity {
         List<NAO> robotNAO = new ArrayList<NAO>();
         this.naoManager = new NAOManager();
         this.naoManager.getAllNAOByProf(PublicContext.currentProf.getMail());
-
+        PublicContext.currentNao = null;
     }
 
     @OnClick(R.id.ButtonSynchroniserRobot)
@@ -55,27 +58,38 @@ public class RobotNAOActivity extends AppCompatActivity {
         super.onStart();
         EventBus.getDefault().register(this);
     }
+
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent intent = getParentActivityIntent();
         startActivity(intent);
     }
+
     @Override
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NAOListEvent naoListEvent) {
-            robotNAO = naoListEvent.getNaos();
-            RobotNAOAdapter robotNAOAdapter = new RobotNAOAdapter(RobotNAOActivity.this, robotNAO);
-            listViewRobotSynchronise.setAdapter(robotNAOAdapter);
-
+        robotNAO = naoListEvent.getNaos();
+        RobotNAOAdapter robotNAOAdapter = new RobotNAOAdapter(RobotNAOActivity.this, robotNAO);
+        listViewRobotSynchronise.setAdapter(robotNAOAdapter);
+        listViewRobotSynchronise.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PublicContext.currentNao = (NAO) parent.getItemAtPosition(position);
+                naoManager.deleteNAO(PublicContext.currentNao.getIp());
+            }
+        });
+        naoManager.getAllNAOByProf(PublicContext.currentProf.getMail());
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent messageEvent) {
         Toast.makeText(getApplicationContext(), messageEvent.getMessage(), Toast.LENGTH_LONG).show();
+
     }
 }
 

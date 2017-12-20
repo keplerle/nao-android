@@ -65,7 +65,7 @@ public class RegisterProfActivity extends AppCompatActivity {
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else if (!password.equals(passwordVerif)) {
-            String text = "Veuillez rerentrer votre password";
+            String text = "Veuillez rerentrer votre mot de passe";
             EditTextPassword.setText("");
             EditTextVerifPassword.setText("");
             Spannable centeredText = new SpannableString(text);

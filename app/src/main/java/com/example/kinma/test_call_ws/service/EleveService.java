@@ -24,7 +24,7 @@ public interface EleveService {
     @POST("rest/eleve")
     Call<Eleve> saveEleve(@Body Eleve eleve);
 
-    @DELETE("/eleve")
+    @DELETE("rest/eleve")
     Call<Boolean> deleteEleve(@Query("id") Long id);
 
     @PUT("rest/eleve")

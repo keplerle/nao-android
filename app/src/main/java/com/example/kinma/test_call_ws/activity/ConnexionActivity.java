@@ -56,21 +56,21 @@ public class ConnexionActivity extends AppCompatActivity {
         MailUtilisateur = EditTextUtilisateur.getText().toString();
         PasswordUtilisateur = EditTextPasswordProf.getText().toString();
         if (MailUtilisateur.equals("") && PasswordUtilisateur.equals("")) {
-            text = "Veuillez rentrer un mail utilisateur et un password";
+            text = "Veuillez rentrer un identifiant et un mot de passe";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                     0, text.length() - 1,
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else if (MailUtilisateur.equals("")) {
-            text = "Veuillez rentrer un mail utilisateur";
+            text = "Veuillez rentrer un identifiant";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                     0, text.length() - 1,
                     Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
         } else if (PasswordUtilisateur.equals("")) {
-            text = "Veuillez rentrer un password";
+            text = "Veuillez rentrer un mot de passe";
             Spannable centeredText = new SpannableString(text);
             centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                     0, text.length() - 1,
