@@ -57,29 +57,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/nom_eleve"
+        app:layout_constraintEnd_toStartOf="@+id/label_etat_moteur"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Batterie :" />
 
     <TextView
         android:id="@+id/label_etat_moteur"
-        android:layout_width="68dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/label_etat_batterie"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Moteur :" />
 

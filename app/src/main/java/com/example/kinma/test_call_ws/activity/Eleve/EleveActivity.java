@@ -1,6 +1,8 @@
 package com.example.kinma.test_call_ws.activity.Eleve;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.example.kinma.test_call_ws.PublicContext;
 import com.example.kinma.test_call_ws.R;
 import com.example.kinma.test_call_ws.activity.Events.EleveListEvent;
 import com.example.kinma.test_call_ws.activity.Events.MessageEvent;
+import com.example.kinma.test_call_ws.activity.RobotNAO.RobotNAOActivity;
 import com.example.kinma.test_call_ws.manager.EleveManager;
 import com.example.kinma.test_call_ws.model.Eleve;
 
@@ -77,7 +80,22 @@ public class EleveActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PublicContext.currentEleve = (Eleve) parent.getItemAtPosition(position);
-                eleveManager.deleteEleve(PublicContext.currentEleve.getId());
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(EleveActivity.this);
+                builder.setMessage("Voulez-vous supprimer l'élève ?");
+                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        eleveManager.deleteEleve(PublicContext.currentEleve.getId());
+                    }
+                });
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         eleveManager.getAllEleveByProf(PublicContext.currentProf.getMail());

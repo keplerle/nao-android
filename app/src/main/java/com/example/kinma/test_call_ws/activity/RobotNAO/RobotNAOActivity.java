@@ -1,6 +1,8 @@
 package com.example.kinma.test_call_ws.activity.RobotNAO;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,6 +47,7 @@ public class RobotNAOActivity extends AppCompatActivity {
         this.naoManager = new NAOManager();
         this.naoManager.getAllNAOByProf(PublicContext.currentProf.getMail());
         PublicContext.currentNao = null;
+
     }
 
     @OnClick(R.id.ButtonSynchroniserRobot)
@@ -80,7 +83,21 @@ public class RobotNAOActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PublicContext.currentNao = (NAO) parent.getItemAtPosition(position);
-                naoManager.deleteNAO(PublicContext.currentNao.getIp());
+                AlertDialog.Builder builder = new AlertDialog.Builder(RobotNAOActivity.this);
+                builder.setMessage("Voulez-vous désynchroniser le robot ?");
+                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        naoManager.deleteNAO(PublicContext.currentNao.getIp());
+                    }
+                });
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         naoManager.getAllNAOByProf(PublicContext.currentProf.getMail());

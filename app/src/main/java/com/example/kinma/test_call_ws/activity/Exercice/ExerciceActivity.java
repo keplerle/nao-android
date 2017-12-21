@@ -3,6 +3,10 @@ package com.example.kinma.test_call_ws.activity.Exercice;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AlignmentSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -71,8 +75,19 @@ public class ExerciceActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PublicContext.currentNao = (NAO) parent.getItemAtPosition(position);
-                Intent intent = new Intent(ExerciceActivity.this, LancerExerciceActivity.class);
-                startActivity(intent);
+                if(PublicContext.currentNao.getEtat_batterie()==1&&PublicContext.currentNao.getEtat_moteur()==1){
+                    Intent intent = new Intent(ExerciceActivity.this, LancerExerciceActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    String text = "Le robot NAO n'est pas en état de fonctionner";
+                    Spannable centeredText = new SpannableString(text);
+                    centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
+                            0, text.length() - 1,
+                            Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
